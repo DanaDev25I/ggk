@@ -9,7 +9,7 @@ import { useTheme } from 'next-themes';
 import Search from './search';  // Ensure the correct import path
 import All from './tabs/All';
 import ImagesTab from './tabs/Images';
-import Footer from './Footer';
+import Footer from './footer';
 const links = [
   { text: 'All', component: <All /> },
   { text: 'Images', component: <ImagesTab /> },
