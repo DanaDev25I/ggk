@@ -8,36 +8,43 @@ const StateContext = createContext();
 export const StateContextProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
+  const [numberofpage, setnumberofpage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);  
+  const [searchhistory,setSearchhistory] = useState([]);
   
   const [showResults, setShowResults] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState('');
 
   useEffect(() => {
-  const fetchData = async () => {
-    if (!searchTerm) {
-      return;
-    }
-    setLoading(true);
-
-    try {
-      const apiKey = 'AIzaSyCuMZ1F76WQQETg3GBLu9eOkOi3p9xzeLQ';
-      const cx = 'f4589861069644b07';
-      const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${searchTerm}`;
-      const response = await axios.get(apiUrl);
-      const items = response.data.items || [];
-      setData(items);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+    const fetchData = async () => {
+      if (!searchTerm) {
+        return;
+      }
+      setLoading(true);
+  
+      try {
+        const apiKey = 'AIzaSyCuMZ1F76WQQETg3GBLu9eOkOi3p9xzeLQ';
+        const cx = 'f4589861069644b07';
+        const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${searchTerm}&start=${(numberofpage - 1) * 10 + 1}`;
+        const response = await axios.get(apiUrl);
+        const items = response.data.items || [];
+        setSearchhistory
+        setSearchhistory((prev) => [...prev, searchTerm]);
+        const totalResults = response.data.searchInformation.totalResults || 0; 
+        setData(items);
+        setTotalResults(totalResults);  
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
     fetchData();
-  }, [searchTerm]);
-
-  const  delayPara = (index, nextWord) => {
+  }, [searchTerm, numberofpage]);  
+  
+  const delayPara = (index, nextWord) => {
     setTimeout(() => {
       setResultData((previousResult) => previousResult + nextWord);
     }, index * 10);
@@ -48,7 +55,6 @@ export const StateContextProvider = ({ children }) => {
     setLoading(true);
     setShowResults(true);
    
-    
     try {
       const response = await run(prompt);
       let responseArray = response.split("**");
@@ -68,21 +74,22 @@ export const StateContextProvider = ({ children }) => {
       console.error("Error while running chat:", error);
     } finally {
       setLoading(false);
-     
     }
   };
 
   const newChat = () => {
     setLoading(false);
     setShowResults(false);
-  
   };
 
   return (
     <StateContext.Provider value={{ 
       searchTerm, setSearchTerm, data, setData, 
       showResults, setShowResults, loading, setLoading, 
-      resultData, setResultData, onSent, newChat 
+      resultData, setResultData, onSent, newChat,
+      setnumberofpage, numberofpage, 
+      totalResults, setTotalResults, 
+      searchhistory 
     }}>
       {children}
     </StateContext.Provider>

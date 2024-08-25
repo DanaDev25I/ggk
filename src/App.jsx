@@ -5,18 +5,26 @@ import Err from './Maincom/Err';
 import Home from './Maincom/Home';
 import Games from './Game/Game';
 import Ai from './Ai/Ai';
-import Movies from './movies/movies'
+import Movies from './page/movies';
+import Tech from './page/tech';
+import Sport from './page/sport';
+import Education from './page/education';
+import Social from './page/social';
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
-        <Route path="search" element={<Results />} />
-       
+        <Route path="search" element={<Results />} />    
         <Route path= "Ai"  element={<Ai/>}/>
         <Route path= "Games"  element={<Games/>}/>
         <Route path= "Movies"  element={<Movies/>}/>
+        <Route path= "Technology"  element={<Tech/>}/>
+        <Route path= "Sport"  element={<Sport/>}/>
+        <Route path= "Education"  element={<Education/>}/>
+        <Route path= "SocialMedias"  element={<Social/>}/>
         <Route path="*" element={<Err />} />
       </Route>
       </>

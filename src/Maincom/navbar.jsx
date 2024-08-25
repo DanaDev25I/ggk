@@ -10,12 +10,16 @@ import {
   DrawerDescription,
 } from '@/components/ui/drawer';
 
-const Url = [
+  const Url = [
   { Text: "Home", url: "/" },
   { Text: "Games", url: "/Games" },
   { Text: "AI", url: "/Ai" },
   { Text: "Search", url: "/search" },
+  { Text: "Technology", url: "/Technology" },
   { Text: "Movies", url: "/Movies" },
+  { Text: "Education", url: "/Education" },
+  { Text: "Sport", url: "/Sport" },
+  { Text: "SocialMedias", url: "/SocialMedias" },
 ];
 
 export function Navbar() {
@@ -33,16 +37,18 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex space-x-8">
-          {Url.map(({ Text, url }) => (
-            <NavLink
-              key={url}
-              to={url}
-              className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
-            >
-              {Text}
-            </NavLink>
-          ))}
+        <div className="hidden md:flex md:justify-center md:w-full">
+          <div className="flex space-x-8">
+            {Url.map(({ Text, url }) => (
+              <NavLink
+                key={url}
+                to={url}
+                className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
+              >
+                {Text}
+              </NavLink>
+            ))}
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -77,7 +83,7 @@ export function Navbar() {
                 <DrawerTitle>Menu</DrawerTitle>
                 <DrawerDescription>Navigate to different sections.</DrawerDescription>
               </DrawerHeader>
-              <div className="flex  flex-col pl-8 space-y-4">
+              <div className="flex flex-col items-center pl-8 space-y-4">
                 {Url.map(({ Text, url }) => (
                   <Link
                     key={url}
@@ -89,7 +95,7 @@ export function Navbar() {
                   </Link>
                 ))}
               </div>
-              <div className="flex justify-between p-4">
+              <div className="flex justify-center p-4">
                 <Button onClick={toggleDrawer}>Close</Button>
               </div>
             </div>
@@ -100,4 +106,4 @@ export function Navbar() {
   );
 }
 
-export default Navbar;
+export {Navbar as default , Url};
