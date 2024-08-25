@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import * as React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu as MenuIcon, Close } from '@mui/icons-material';
 import { IconButton, Drawer, Box } from '@mui/material';
@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { SunIcon, MoonIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Avatar } from '@nextui-org/avatar';
-import { useSwipeable } from 'react-swipeable';
+import { useSwipeable } from 'react-use-gesture';
 
 const Url = [
   { Text: "Home", url: "/" },
@@ -21,24 +21,16 @@ const Url = [
 ];
 
 export function Navbar() {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
   const { theme, setTheme } = useTheme();
 
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
-  const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => {
-      if (drawerOpen) {
-        toggleDrawer();
-      }
-    },
-    onSwipedRight: () => {
-      if (!drawerOpen) {
-        toggleDrawer();
-      }
-    },
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: true, // Optional for swipe support on desktop
+  // Gesture handling
+  const bind = useSwipeable({
+    onSwipedRight: () => !drawerOpen && setDrawerOpen(true),
+    onSwipedLeft: () => drawerOpen && setDrawerOpen(false),
+    swipeDuration: 200,
   });
 
   return (
@@ -84,11 +76,6 @@ export function Navbar() {
             className="text-gray-800 dark:text-gray-200"
             aria-expanded={drawerOpen}
             aria-label="Toggle menu"
-            sx={{
-              '&:hover': {
-                backgroundColor: 'rgba(0, 0, 0, 0.1)', // Add a hover effect
-              },
-            }}
           >
             {drawerOpen ? <Close /> : <MenuIcon />}
           </IconButton>
@@ -104,15 +91,13 @@ export function Navbar() {
           }}
           sx={{
             '& .MuiDrawer-paper': {
-              width: '75%', // Increased width for better touch targets
+              width: '60%', // Adjust width for tablets
               borderRadius: '20px',
-              overflow: 'hidden',
-              padding: '16px', // Add padding for better touch targets
+              overflow: 'hidden', // Ensure rounded corners are visible
             },
           }}
-          {...swipeHandlers} // Add swipe handlers
         >
-          <Box className="flex flex-col h-full">
+          <Box p={4} className="flex flex-col h-full" {...bind()}>
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold">Menu</h2>
               <IconButton onClick={toggleDrawer}>
@@ -124,7 +109,7 @@ export function Navbar() {
                 <Link
                   key={url}
                   to={url}
-                  className="text-lg font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-colors py-2 px-4 rounded-md"
+                  className="text-lg font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
                   onClick={toggleDrawer}
                 >
                   {Text}
