@@ -6,8 +6,6 @@ import { Button } from '@/components/ui/button';
 import { SunIcon, MoonIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Avatar } from '@nextui-org/avatar';
-import { useSwipeable } from 'react-use-gesture';
-
 const Url = [
   { Text: "Home", url: "/" },
   { Text: "Games", url: "/Games" },
@@ -26,13 +24,6 @@ export function Navbar() {
 
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
-  // Gesture handling
-  const bind = useSwipeable({
-    onSwipedRight: () => !drawerOpen && setDrawerOpen(true),
-    onSwipedLeft: () => drawerOpen && setDrawerOpen(false),
-    swipeDuration: 200,
-  });
-
   return (
     <header className="bg-white dark:bg-slate-950 shadow-md transition-colors">
       <nav className="container mx-auto flex items-center justify-between p-4">
@@ -43,8 +34,8 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex md:justify-center md:w-full lg:w-4/5">
-          <div className="flex space-x-6 lg:space-x-8">
+        <div className="hidden md:flex md:justify-center md:w-full">
+          <div className="flex space-x-8">
             {Url.map(({ Text, url }) => (
               <NavLink
                 key={url}
@@ -91,13 +82,13 @@ export function Navbar() {
           }}
           sx={{
             '& .MuiDrawer-paper': {
-              width: '60%', // Adjust width for tablets
+              width: '55%',
               borderRadius: '20px',
               overflow: 'hidden', // Ensure rounded corners are visible
             },
           }}
         >
-          <Box p={4} className="flex flex-col h-full" {...bind()}>
+          <Box p={4} className="flex flex-col h-full">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold">Menu</h2>
               <IconButton onClick={toggleDrawer}>
@@ -119,12 +110,10 @@ export function Navbar() {
             </div>
           </Box>
         </Drawer>
-
-        {/* Avatar Button */}
-        <button className='bg-transparent hidden md:flex'>
-          <div className="flex lg:gap-4 items-center">
-            <Avatar showFallback src='https://images.unsplash.com/broken' />
-          </div>
+        <button className='bg-transparent hidden large:flex md:flex'>
+        <div className="flex lg gap-4 items-center">
+         <Avatar showFallback src='https://images.unsplash.com/broken' />
+       </div>
         </button>
       </nav>
     </header>
