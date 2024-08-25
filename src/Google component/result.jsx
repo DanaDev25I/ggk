@@ -9,10 +9,14 @@ import { useTheme } from 'next-themes';
 import Search from './search';  // Ensure the correct import path
 import All from './tabs/All';
 import ImagesTab from './tabs/Images';
+<<<<<<< HEAD
 import { useStateContext } from '../store/usecontext';
 import { Pagination } from '@nextui-org/react';
 import Footer from './footer';
 
+=======
+import Footer from './footer';
+>>>>>>> 2bbc6d9a3119c8507f3bceda4be07c85ba524a0f
 const links = [
   { text: 'All', component: <All /> },
   { text: 'Images', component: <ImagesTab /> },

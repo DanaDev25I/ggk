@@ -8,7 +8,11 @@ function Social() {
   return (
     <div className="p-4">
       <div className="mb-4">
+<<<<<<< HEAD
         <h1>Sport</h1>
+=======
+        <h1>Social</h1>
+>>>>>>> 2bbc6d9a3119c8507f3bceda4be07c85ba524a0f
        
       </div>
       
