@@ -9,24 +9,19 @@ import { useTheme } from 'next-themes';
 import Search from './search';  // Ensure the correct import path
 import All from './tabs/All';
 import ImagesTab from './tabs/Images';
-<<<<<<< HEAD
 import { useStateContext } from '../store/usecontext';
 import { Pagination } from '@nextui-org/react';
 import Footer from './footer';
 
-=======
-import Footer from './footer';
->>>>>>> 2bbc6d9a3119c8507f3bceda4be07c85ba524a0f
 const links = [
   { text: 'All', component: <All /> },
   { text: 'Images', component: <ImagesTab /> },
-  
 ];
 
 export const Results = () => {
   const [value, setValue] = useState('1');
   const { theme } = useTheme();
-  const { setnumberofpage, numberofpage, searchTerm, searchhistory } = useStateContext();
+  const { setnumberofpage, err, numberofpage, searchTerm, searchhistory } = useStateContext();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -36,9 +31,17 @@ export const Results = () => {
     setnumberofpage(page);
   };
 
+  if (err) {
+    return (
+      <div className="text-center mt-20">
+        <h2 className="text-2xl text-red-500">Error</h2>
+        <p className="text-lg text-gray-500">This feature is currently under construction.</p>
+      </div>
+    );
+  }
+
   return (
     <section className="flex flex-col mt-10 min-h-screen">
-
       {searchTerm ? (
         <>
           <div className="w-full flex items-center justify-center sm:max-w-md mx-auto">
@@ -55,9 +58,9 @@ export const Results = () => {
                   sx={{
                     display: 'flex',
                     flexDirection: 'row',
-                    overflowX: 'auto', // Handle overflow for more tabs
+                    overflowX: 'auto',
                     whiteSpace: 'nowrap',
-                    '@media(min-width: 768px)': { // Change the breakpoint as needed
+                    '@media(min-width: 768px)': {
                       flexWrap: 'nowrap',
                     },
                   }}
@@ -70,7 +73,7 @@ export const Results = () => {
                       component={NavLink}
                       sx={{
                         fontSize: '16px',
-                        flexGrow: 1, // Ensure tabs grow equally
+                        flexGrow: 1,
                         textTransform: 'none',
                         fontWeight: value === (index + 1).toString() ? 'bold' : 'normal',
                         color: theme === 'dark' ? 'white' : 'text.primary',
@@ -97,7 +100,7 @@ export const Results = () => {
               <Pagination
                 isCompact
                 showControls
-                total={10}  // Set the total number of pages dynamically
+                total={5}  
                 initialPage={numberofpage}
                 onChange={handlePageChange}
               />

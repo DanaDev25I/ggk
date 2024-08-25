@@ -22,6 +22,7 @@ const DrawerOverlay = React.forwardRef(({ className, ...props }, ref) => (
   />
 ));
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
+
 const DrawerContent = React.forwardRef(({ className, open, children, ...props }, ref) => (
   <DrawerPortal>
     <DrawerOverlay />
@@ -31,13 +32,9 @@ const DrawerContent = React.forwardRef(({ className, open, children, ...props },
         "fixed inset-y-0 right-0 z-50 flex h-full w-80 flex-col rounded-l-lg border bg-background transition-transform",
         className
       )}
-      style={{
-        transform: open ? "translateX(0)" : "translateX(100%)",
-        transition: "transform 0.3s ease-in-out",
-      }}
+   
       {...props}
     >
-      {/* Removed the decorative bar */}
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>

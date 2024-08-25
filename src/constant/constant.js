@@ -47,7 +47,7 @@ import front from '../../public/img/front.png';
 import flimdo from '../../public/img/ggg.png';
 import watanflix from '../../public/img/arabicshit.png';
 import fel3arda from '../../public/img/fel3arda.png';
-<<<<<<< HEAD
+
 import youtube from '../../public/img/youtube.png';
 import instagram from '../../public/img/instagram.png';
 import facebook from  '../../public/img/facebook.png';
@@ -57,17 +57,8 @@ import gltf  from '../../public/img/gltf.png';
 import shadcn  from '../../public/img/shadcn.png';
 
 
-=======
-
-import instagram from '../../public/img/instagram.png';
-import facebook from  '../../public/img/facebook.png';
-import chatgpt from '../../public/img/chatgpt.png';
-import shaflim  from '../../public/img/shafilm.png';
-import gltf  from '../../public/img/gltf.png';
-import shadcn  from '../../public/img/shadcn.png';
 
 
->>>>>>> 2bbc6d9a3119c8507f3bceda4be07c85ba524a0f
 const Allsites = {
   MoviesSites: [
     {
@@ -473,7 +464,7 @@ const Allsites = {
       name: "Dicord",
       image: dis,
       url: "https://discord.com/",
-<<<<<<< HEAD
+
       tooltip: "visit the site"
     },
     {
@@ -481,8 +472,7 @@ const Allsites = {
       name: "Youtube",
       image: youtube,
       url: "https://youtube.com/",
-=======
->>>>>>> 2bbc6d9a3119c8507f3bceda4be07c85ba524a0f
+
       tooltip: "visit the site"
     }
   ]

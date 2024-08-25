@@ -143,3 +143,7 @@
 ::-webkit-scrollbar {
   display: none;
 }
+/* Add this to your global CSS file */
+.transition-colors {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
