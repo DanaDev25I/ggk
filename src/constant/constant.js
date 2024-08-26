@@ -66,14 +66,14 @@ const Allsites = {
       name: "کورد سینەما",
       image: kurdcinama,
       url: "https://www.kurdcinama.com/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Kurdish"
     },{
       id: "12",
       name: "Netflix",
       image: netflix,
       url: "https://www.Netflix.com/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Kurdish"
     },
     {
@@ -81,7 +81,7 @@ const Allsites = {
       name: "كورد سەبتایتڵ",
       image: kurdsubtitle,
       url: "https://kurdsubtitle.net/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Kurdish"
     },
     {
@@ -89,7 +89,7 @@ const Allsites = {
       name: "بینەر",
       image: beenar,
       url: "https://beenar.net/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Kurdish"
     },
     {
@@ -97,7 +97,7 @@ const Allsites = {
       name: "Badini",
       image: shaflim,
       url: "https://badini.shafilm.vip/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Kurdish"
     },
     {
@@ -105,7 +105,7 @@ const Allsites = {
       name: "Kurddoblazh",
       image: doblazh,
       url: "https://www.kurddoblazh.com/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Kurdish"
     },
     {
@@ -113,7 +113,7 @@ const Allsites = {
       name: "Shahid",
       image: shahid,
       url: "https://shahid.mbc.net/en",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Arabic"
     },
     {
@@ -121,7 +121,7 @@ const Allsites = {
       name: "Filmdoo",
       image: flimdo,
       url: "https://www.filmdoo.com/arabic/page/1",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Arabic"
     },
     {
@@ -129,7 +129,7 @@ const Allsites = {
       name: "WatchSeries",
       image: watchblue,
       url: "https://watchseries.bar/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "English"
     },
     {
@@ -137,7 +137,7 @@ const Allsites = {
       name: "WatchSeriesHD",
       image: red,
       url: "https://www1.watchserieshd.org/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "English"
     },
     {
@@ -145,7 +145,7 @@ const Allsites = {
       name: "WatanFlix",
       image: watanflix,
       url: "https://watanflix.com/en",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Arabic"
     },
     {
@@ -153,7 +153,7 @@ const Allsites = {
       name: "HDToday",
       image: today,
       url: "https://hdtodayz.to/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "English"
     },
     {
@@ -161,7 +161,7 @@ const Allsites = {
       name: "2flix",
       image: flix,
       url: "https://2flix.to/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "English"
     }
   ],
@@ -172,54 +172,54 @@ const Allsites = {
       name: "Marca",
       image: marca,
       url: "https://www.marca.com/en/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "2",
       name: "ESPN",
       image: espn,
       url: "https://www.espn.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "3",
       name: "Fal3arda",
       image: fel3arda,
       url: "https://fal3arda-new.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "4",
       name: "Shootz",
       image: yalla,
       url: "https://shootz.yalla-shoot-tv.live/fel3ardas/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "5",
       name: "Yari",
       image: yari,
       url: "http://wvvw.yari.live/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },{
       id: "6",
       name: "Onefootball",
       image: one,
       url: "https://onefootball.com/en/matches",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },{
       id: "7",
       name: "365Soccers",
       image: g,
       url: "https://www.365scores.com/ar",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "8",
       name: "YariGaTV",
       image: yariganet,
       url: "https://yarigatv.basnews.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     }
   ],
   
@@ -229,7 +229,7 @@ const Allsites = {
       name: "GLTF",
       image: gltf ,
       url: "https://gltf.pmnd.rs/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "UI"
     },
     {
@@ -237,7 +237,7 @@ const Allsites = {
       name: "Creative Tim",
       image: tim,
       url: "https://www.creative-tim.com/twcomponents/gradient-generator",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "UI"
     },
     {
@@ -245,7 +245,7 @@ const Allsites = {
       name: "Flowbite",
       image: followbite,
       url: "https://flowbite.com/docs/components/drawer/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "UI"
     },
     {
@@ -253,7 +253,7 @@ const Allsites = {
       name: "Tailwind UI",
       image: tailwind,
       url: "https://tailwindui.com/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "UI"
     },
     {
@@ -261,7 +261,7 @@ const Allsites = {
       name: "Three.js",
       image: threejs,
       url: "https://threejs.org/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "UI"
     },
     {
@@ -269,7 +269,7 @@ const Allsites = {
       name: "GSAP",
       image: gsap,
       url: "https://gsap.com/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "UI"
     },
     {
@@ -277,7 +277,7 @@ const Allsites = {
       name: "MUI",
       image: mui,
       url: "https://mui.com/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "UI"
     },
     {
@@ -285,7 +285,7 @@ const Allsites = {
       name: "Shadcn",
       image: shadcn,
       url: "https://ui.shadcn.com/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "UI"
     },
     {
@@ -293,7 +293,7 @@ const Allsites = {
       name: "NextUI",
       image: nextui,
       url: "https://nextui.org/docs/guide/introduction",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "UI"
     },
     {
@@ -301,7 +301,7 @@ const Allsites = {
       name: "Frontend Masters",
       image: front,
       url: "https://frontendmasters.com/courses/algorithms/bubble-sort/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Data Structure"
     },
     {
@@ -309,7 +309,7 @@ const Allsites = {
       name: "GeeksforGeeks",
       image: geek,
       url: "https://www.geeksforgeeks.org/data-structures/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Data Structure"
     },
     {
@@ -317,7 +317,7 @@ const Allsites = {
       name: "Git",
       image: git,
       url: "https://git-scm.com/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Tools"
     },
     {
@@ -325,7 +325,7 @@ const Allsites = {
       name: "GitHub",
       image: github,
       url: "https://github.com/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Tools"
     },
     {
@@ -333,7 +333,7 @@ const Allsites = {
       name: "Next.js",
       image: nextjs,
       url: "https://nextjs.org/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Tools"
     },
     {
@@ -341,7 +341,7 @@ const Allsites = {
       name: "Vite",
       image: vite,
       url: "https://vitejs.dev/",
-      tooltip: "visit the site",
+      tooltip: "Click to visit",
       category: "Tools"
     }
   ],
@@ -352,59 +352,59 @@ const Allsites = {
       name: "Salahaddin University",
       image: salllahadin, 
       url: "https://ids.su.edu.krd/account/login?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dsalahaddin-Uni.webapp1%26redirect_uri%3Dhttps%253A%252F%252Fapp.su.edu.krd%252Ferp-web-signin-oidc%26response_type%3Dcode%2520id_token%26scope%3Dopenid%2520profile%2520roles%2520hrapi%2520offline_access%26response_mode%3Dform_post%26nonce%3D638598612927837485.OTAzNjM0NWItYTc4MS00ZTcyLWEyOWQtODU3ZWI1YTE1NDBkMDA1ZmJmMzUtYTNiMC00Zjk5LTgxMDctNWViMDc1MzUzMTIz%26state%3DCfDJ8LxI8ChCUGZMlKEGZXqDsFQ4m4uFg-9d9_1yqhqoYf4voTmJmJjeNSfJXCGBbV5kPdbKkE83BDHjJ-R5iJqO-VXgv-kg6bRIXEKD0m3xRlmo9rCkWXBR33t09K__d-vbjzBk2OFCJtiBPSe1eorvY7EbaILZFzaR8ZPpe5ml4XVLLatuHnVNROnrz1BywvaBQoKK7pDwrvuS7ZTl15xQ9iit_elw-d-7vlwhPj0UnVmZJb5lmFozHxuzYuoBxN-7N6gjXBapss_hPfS3qsVguri9duIyEkeWk9wCmfjOSE3BdqTO_5jZBzdSPzg0HFcnmA%26x-client-SKU%3DID_NETSTANDARD1_4%26x-client-ver%3D5.2.0.0",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "2",
       name: "Duolingo",
       image: duo,
       url: "https://www.duolingo.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "3",
       name: "QuillBot",
       image:  quilboat, // Assuming this is the intended image
       url: "https://quillbot.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "4",
       name: "Gamma",
       image: gamma,
       url: "https://gamma.app/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "5",
       name: "ChatGPT",
       image: chatgpt,
       url: "https://chatgpt.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },{
       id: "6",
       name: "Pinterest",
       image: pinterest,
       url: "https://www.pinterest.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },{
       id: "7",
       name: "Talabat",
       image: talabat,
       url: "https://iraq.talabat.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },{
       id: "8",
       name: "Lezzoo",
       image: lezzo,
       url: "https://lezzoo.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },{
       id: "9",
       name: "toters",
       image: torters,
       url: "https://www.totersapp.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
   ],
   
@@ -414,42 +414,42 @@ const Allsites = {
       name: "Facebook",
       image:facebook,
       url: "https://www.facebook.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "2",
       name: "TikTok",
       image: tiktok,
       url: "https://www.tiktok.com/en/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "3",
       name: "Telegram",
       image: tele,
       url: "https://web.telegram.org/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "4",
       name: "Instagram",
       image: instagram,
       url: "https://www.instagram.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "5",
       name: "Snapchat",
       image: snapchat,
       url: "https://www.snapchat.com/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "6",
       name: "X",
       image: x,
       url: "https://x.com/home",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
  
     {
@@ -457,7 +457,7 @@ const Allsites = {
       name: "vibar",
       image: vibar,
       url: "https://www.viber.com/en/",
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "8",
@@ -465,7 +465,7 @@ const Allsites = {
       image: dis,
       url: "https://discord.com/",
 
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     },
     {
       id: "9",
@@ -473,7 +473,7 @@ const Allsites = {
       image: youtube,
       url: "https://youtube.com/",
 
-      tooltip: "visit the site"
+      tooltip: "Click to visit"
     }
   ]
 };

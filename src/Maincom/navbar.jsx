@@ -8,14 +8,14 @@ import { useTheme } from 'next-themes';
 import { Avatar } from '@nextui-org/avatar';
 const Url = [
   { Text: "Home", url: "/" },
-  { Text: "Games", url: "/Games" },
   { Text: "AI", url: "/Ai" },
-  { Text: "Search", url: "/search" },
-  { Text: "Technology", url: "/Technology" },
   { Text: "Movies", url: "/Movies" },
-  { Text: "Education", url: "/Education" },
   { Text: "Sport", url: "/Sport" },
   { Text: "SocialMedias", url: "/SocialMedias" },
+  { Text: "Apps", url: "/Education" },
+  { Text: "Technology", url: "/Technology" },
+  { Text: "PlayGame", url: "/Games" },
+  { Text: "Search", url: "/search" },
 ];
 
 export function Navbar() {
