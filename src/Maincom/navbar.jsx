@@ -35,12 +35,12 @@ export function Navbar() {
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex md:justify-center md:w-full">
-          <div className="flex space-x-8">
+          <div className="flex space-x-6">
             {Url.map(({ Text, url }) => (
               <NavLink
                 key={url}
                 to={url}
-                className={`text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 transition-colors`}
+                className={`text-gray-800 sm:text-sm dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 transition-colors`}
               >
                 {Text}
               </NavLink>
