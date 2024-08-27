@@ -49,7 +49,7 @@ export function Navbar() {
           </div>
         </div>
 
-        <div className="hidden md:flex items-center">
+        <div className=" md:flex items-center">
           {/* Theme Switch for Desktop */}
           <Button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
