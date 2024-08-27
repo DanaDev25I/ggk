@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, useNavigate, NavLink } from 'react-router-dom';
 import { Menu as MenuIcon, Close } from '@mui/icons-material';
 import { IconButton, Drawer, Box } from '@mui/material';
 import { Button } from '@/components/ui/button';
 import { SunIcon, MoonIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Avatar } from '@nextui-org/avatar';
+
 const Url = [
   { Text: "Home", url: "/" },
   { Text: "AI", url: "/Ai" },
@@ -21,7 +22,7 @@ const Url = [
 export function Navbar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const { theme, setTheme } = useTheme();
-
+  const navigate = useNavigate();
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
   return (
@@ -110,10 +111,15 @@ export function Navbar() {
             </div>
           </Box>
         </Drawer>
-        <button className='bg-transparent hidden large:flex md:flex'>
-        <div className="flex lg gap-4 items-center">
-         <Avatar showFallback src='https://images.unsplash.com/broken' />
-       </div>
+        
+       
+        <button
+          className='bg-transparent hidden lg:flex items-center'
+          onClick={() => navigate("/login")}
+        >
+          <div className="flex gap-4 items-center">
+            <Avatar showFallback src='https://images.unsplash.com/broken' />
+          </div>
         </button>
       </nav>
     </header>

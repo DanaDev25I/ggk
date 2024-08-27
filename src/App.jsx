@@ -10,7 +10,8 @@ import Tech from './page/tech';
 import Sport from './page/sport';
 import Education from './page/education';
 import Social from './page/social';
-
+import Login from './Maincom/login';
+import Signin from './Maincom/signin';
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -25,6 +26,8 @@ function App() {
         <Route path= "Sport"  element={<Sport/>}/>
         <Route path= "Education"  element={<Education/>}/>
         <Route path= "SocialMedias"  element={<Social/>}/>
+        <Route path= "Login"  element={<Login/>}/>
+        <Route path= "signin"  element={<Signin/>}/>
         <Route path="*" element={<Err />} />
       </Route>
       </>
