@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import PocketBase from 'pocketbase';
 import { useNavigate, Link } from 'react-router-dom';
 
-const pb = new PocketBase('http://127.0.0.1:8090');
+const pb = new PocketBase('https://searchwebapps.netlify.app');
 
 const LoginPage = () => {
   const navigate = useNavigate();
