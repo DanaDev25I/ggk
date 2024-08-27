@@ -6,13 +6,13 @@ migrate((db) => {
   collection.options = {
     "allowEmailAuth": true,
     "allowOAuth2Auth": true,
-    "allowUsernameAuth": true,
+    "allowUsernameAuth": false,
     "exceptEmailDomains": null,
     "manageRule": null,
     "minPasswordLength": 8,
     "onlyEmailDomains": null,
     "onlyVerified": false,
-    "requireEmail": true
+    "requireEmail": false
   }
 
   return dao.saveCollection(collection)

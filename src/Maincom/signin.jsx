@@ -4,14 +4,17 @@ import { useForm } from 'react-hook-form';
 import PocketBase from 'pocketbase';
 import { useNavigate, Link } from 'react-router-dom';
 
-const pb = new PocketBase('https://searchwebapps.netlify.app');
+const pb = new PocketBase('https://search-app.pockethost.io/');
+
 
 const SignUpPage = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmitSignUp = async (data) => {
-    try {
+ const onSubmitSignUp = async (data) => {
+  try {
+    // Ensure that the request is not being made if a previous one is pending
+    if (navigator.onLine) {
       const userData = await pb.collection('users').create({
         username: data.username,
         email: data.email,
@@ -26,10 +29,14 @@ const SignUpPage = () => {
       await pb.collection('users').requestVerification(data.email);
 
       navigate('/', { state: { user: { username: data.username } } });
-    } catch (error) {
-      console.error('Error signing up:', error);
+    } else {
+      console.error('No internet connection.');
     }
-  };
+  } catch (error) {
+    console.error('Error signing up:', error);
+  }
+};
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
