@@ -12,6 +12,7 @@ import Education from './page/education';
 import Social from './page/social';
 import Login from './Maincom/login';
 import Signin from './Maincom/signin';
+import Profile from './Maincom/profile';
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -28,6 +29,7 @@ function App() {
         <Route path= "SocialMedias"  element={<Social/>}/>
         <Route path= "Login"  element={<Login/>}/>
         <Route path= "signin"  element={<Signin/>}/>
+        <Route path= "profile"  element={<Profile/>}/>
         <Route path="*" element={<Err />} />
       </Route>
       </>

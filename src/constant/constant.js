@@ -69,7 +69,7 @@ const Allsites = {
       tooltip: "Click to visit",
       category: "Kurdish"
     },{
-      id: "12",
+      id: "2",
       name: "Netflix",
       image: netflix,
       url: "https://www.Netflix.com/",
@@ -77,7 +77,7 @@ const Allsites = {
       category: "Kurdish"
     },
     {
-      id: "2",
+      id: "3",
       name: "كورد سەبتایتڵ",
       image: kurdsubtitle,
       url: "https://kurdsubtitle.net/",
@@ -85,7 +85,7 @@ const Allsites = {
       category: "Kurdish"
     },
     {
-      id: "3",
+      id: "4",
       name: "بینەر",
       image: beenar,
       url: "https://beenar.net/",
@@ -93,7 +93,7 @@ const Allsites = {
       category: "Kurdish"
     },
     {
-      id: "4",
+      id: "10",
       name: "Badini",
       image: shaflim,
       url: "https://badini.shafilm.vip/",
@@ -101,31 +101,16 @@ const Allsites = {
       category: "Kurdish"
     },
     {
-      id: "5",
+      id: "8",
       name: "Kurddoblazh",
       image: doblazh,
       url: "https://www.kurddoblazh.com/",
       tooltip: "Click to visit",
       category: "Kurdish"
     },
+    
     {
       id: "6",
-      name: "Shahid",
-      image: shahid,
-      url: "https://shahid.mbc.net/en",
-      tooltip: "Click to visit",
-      category: "Arabic"
-    },
-    {
-      id: "7",
-      name: "Filmdoo",
-      image: flimdo,
-      url: "https://www.filmdoo.com/arabic/page/1",
-      tooltip: "Click to visit",
-      category: "Arabic"
-    },
-    {
-      id: "8",
       name: "WatchSeries",
       image: watchblue,
       url: "https://watchseries.bar/",
@@ -133,7 +118,7 @@ const Allsites = {
       category: "English"
     },
     {
-      id: "9",
+      id: "7",
       name: "WatchSeriesHD",
       image: red,
       url: "https://www1.watchserieshd.org/",
@@ -141,15 +126,7 @@ const Allsites = {
       category: "English"
     },
     {
-      id: "10",
-      name: "WatanFlix",
-      image: watanflix,
-      url: "https://watanflix.com/en",
-      tooltip: "Click to visit",
-      category: "Arabic"
-    },
-    {
-      id: "11",
+      id: "9",
       name: "HDToday",
       image: today,
       url: "https://hdtodayz.to/",
@@ -163,93 +140,115 @@ const Allsites = {
       url: "https://2flix.to/",
       tooltip: "Click to visit",
       category: "English"
-    }
+    },{
+      id: "11",
+      name: "Shahid",
+      image: shahid,
+      url: "https://shahid.mbc.net/en",
+      tooltip: "Click to visit",
+      category: "Arabic"
+    },
+    {
+      id: "5",
+      name: "Filmdoo",
+      image: flimdo,
+      url: "https://www.filmdoo.com/arabic/page/1",
+      tooltip: "Click to visit",
+      category: "Arabic"
+    },{
+      id: "10",
+      name: "WatanFlix",
+      image: watanflix,
+      url: "https://watanflix.com/en",
+      tooltip: "Click to visit",
+      category: "Arabic"
+    },
   ],
   
   Sports: [
     {
-      id: "1",
-      name: "Marca",
-      image: marca,
-      url: "https://www.marca.com/en/",
-      tooltip: "Click to visit"
-    },
-    {
       id: "2",
-      name: "ESPN",
-      image: espn,
-      url: "https://www.espn.com/",
+      name: "YariGaTV",
+      image: yariganet,
+      url: "https://yarigatv.basnews.com/",
       tooltip: "Click to visit"
-    },
-    {
-      id: "3",
+    }, {
+      id: "1",
       name: "Fal3arda",
       image: fel3arda,
       url: "https://fal3arda-new.com/",
       tooltip: "Click to visit"
     },
     {
-      id: "4",
+      id: "5",
       name: "Shootz",
       image: yalla,
       url: "https://shootz.yalla-shoot-tv.live/fel3ardas/",
       tooltip: "Click to visit"
     },
     {
-      id: "5",
+      id: "4",
       name: "Yari",
       image: yari,
       url: "http://wvvw.yari.live/",
       tooltip: "Click to visit"
-    },{
+    },
+    {
+      id: "7",
+      name: "Marca",
+      image: marca,
+      url: "https://www.marca.com/en/",
+      tooltip: "Click to visit"
+    },
+    {
+      id: "8",
+      name: "ESPN",
+      image: espn,
+      url: "https://www.espn.com/",
+      tooltip: "Click to visit"
+    },
+   {
       id: "6",
       name: "Onefootball",
       image: one,
       url: "https://onefootball.com/en/matches",
       tooltip: "Click to visit"
     },{
-      id: "7",
+      id: "3",
       name: "365Soccers",
       image: g,
       url: "https://www.365scores.com/ar",
       tooltip: "Click to visit"
     },
-    {
-      id: "8",
-      name: "YariGaTV",
-      image: yariganet,
-      url: "https://yarigatv.basnews.com/",
-      tooltip: "Click to visit"
-    }
   ],
   
   Technology: [
     {
-      id: "1",
-      name: "GLTF",
-      image: gltf ,
-      url: "https://gltf.pmnd.rs/",
-      tooltip: "Click to visit",
-      category: "UI"
-    },
-    {
       id: "2",
-      name: "Creative Tim",
-      image: tim,
-      url: "https://www.creative-tim.com/twcomponents/gradient-generator",
+      name: "GitHub",
+      image: github,
+      url: "https://github.com/",
       tooltip: "Click to visit",
-      category: "UI"
+      category: "Tools"
     },
     {
-      id: "3",
-      name: "Flowbite",
-      image: followbite,
-      url: "https://flowbite.com/docs/components/drawer/",
+      id: "1",
+      name: "Next.js",
+      image: nextjs,
+      url: "https://nextjs.org/",
       tooltip: "Click to visit",
-      category: "UI"
+      category: "Tools"
     },
     {
-      id: "4",
+      id: "15",
+      name: "Vite",
+      image: vite,
+      url: "https://vitejs.dev/",
+      tooltip: "Click to visit",
+      category: "Tools"
+    } ,
+    {
+      id: "10",
       name: "Tailwind UI",
       image: tailwind,
       url: "https://tailwindui.com/",
@@ -257,7 +256,7 @@ const Allsites = {
       category: "UI"
     },
     {
-      id: "5",
+      id: "9",
       name: "Three.js",
       image: threejs,
       url: "https://threejs.org/",
@@ -265,7 +264,7 @@ const Allsites = {
       category: "UI"
     },
     {
-      id: "6",
+      id: "8",
       name: "GSAP",
       image: gsap,
       url: "https://gsap.com/",
@@ -281,7 +280,7 @@ const Allsites = {
       category: "UI"
     },
     {
-      id: "8",
+      id: "6",
       name: "Shadcn",
       image: shadcn,
       url: "https://ui.shadcn.com/",
@@ -289,7 +288,7 @@ const Allsites = {
       category: "UI"
     },
     {
-      id: "9",
+      id: "5",
       name: "NextUI",
       image: nextui,
       url: "https://nextui.org/docs/guide/introduction",
@@ -297,7 +296,7 @@ const Allsites = {
       category: "UI"
     },
     {
-      id: "10",
+      id: "4",
       name: "Frontend Masters",
       image: front,
       url: "https://frontendmasters.com/courses/algorithms/bubble-sort/",
@@ -305,7 +304,7 @@ const Allsites = {
       category: "Data Structure"
     },
     {
-      id: "11",
+      id: "14",
       name: "GeeksforGeeks",
       image: geek,
       url: "https://www.geeksforgeeks.org/data-structures/",
@@ -313,37 +312,37 @@ const Allsites = {
       category: "Data Structure"
     },
     {
-      id: "12",
+      id: "3",
       name: "Git",
       image: git,
       url: "https://git-scm.com/",
       tooltip: "Click to visit",
       category: "Tools"
     },
-    {
+   {
       id: "13",
-      name: "GitHub",
-      image: github,
-      url: "https://github.com/",
+      name: "GLTF",
+      image: gltf ,
+      url: "https://gltf.pmnd.rs/",
       tooltip: "Click to visit",
-      category: "Tools"
+      category: "UI"
     },
     {
-      id: "14",
-      name: "Next.js",
-      image: nextjs,
-      url: "https://nextjs.org/",
+      id: "12",
+      name: "Creative Tim",
+      image: tim,
+      url: "https://www.creative-tim.com/twcomponents/gradient-generator",
       tooltip: "Click to visit",
-      category: "Tools"
+      category: "UI"
     },
     {
-      id: "15",
-      name: "Vite",
-      image: vite,
-      url: "https://vitejs.dev/",
+      id: "11",
+      name: "Flowbite",
+      image: followbite,
+      url: "https://flowbite.com/docs/components/drawer/",
       tooltip: "Click to visit",
-      category: "Tools"
-    }
+      category: "UI"
+    },
   ],
   
   Education: [
@@ -353,59 +352,59 @@ const Allsites = {
       image: salllahadin, 
       url: "https://ids.su.edu.krd/account/login?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dsalahaddin-Uni.webapp1%26redirect_uri%3Dhttps%253A%252F%252Fapp.su.edu.krd%252Ferp-web-signin-oidc%26response_type%3Dcode%2520id_token%26scope%3Dopenid%2520profile%2520roles%2520hrapi%2520offline_access%26response_mode%3Dform_post%26nonce%3D638598612927837485.OTAzNjM0NWItYTc4MS00ZTcyLWEyOWQtODU3ZWI1YTE1NDBkMDA1ZmJmMzUtYTNiMC00Zjk5LTgxMDctNWViMDc1MzUzMTIz%26state%3DCfDJ8LxI8ChCUGZMlKEGZXqDsFQ4m4uFg-9d9_1yqhqoYf4voTmJmJjeNSfJXCGBbV5kPdbKkE83BDHjJ-R5iJqO-VXgv-kg6bRIXEKD0m3xRlmo9rCkWXBR33t09K__d-vbjzBk2OFCJtiBPSe1eorvY7EbaILZFzaR8ZPpe5ml4XVLLatuHnVNROnrz1BywvaBQoKK7pDwrvuS7ZTl15xQ9iit_elw-d-7vlwhPj0UnVmZJb5lmFozHxuzYuoBxN-7N6gjXBapss_hPfS3qsVguri9duIyEkeWk9wCmfjOSE3BdqTO_5jZBzdSPzg0HFcnmA%26x-client-SKU%3DID_NETSTANDARD1_4%26x-client-ver%3D5.2.0.0",
       tooltip: "Click to visit"
+    },{
+      id: "2",
+      name: "ChatGPT",
+      image: chatgpt,
+      url: "https://chatgpt.com/",
+      tooltip: "Click to visit"
+    },{
+      id: "3",
+      name: "Pinterest",
+      image: pinterest,
+      url: "https://www.pinterest.com/",
+      tooltip: "Click to visit"
+    },{
+      id: "4",
+      name: "Talabat",
+      image: talabat,
+      url: "https://iraq.talabat.com/",
+      tooltip: "Click to visit"
+    },{
+      id: "5",
+      name: "Lezzoo",
+      image: lezzo,
+      url: "https://lezzoo.com/",
+      tooltip: "Click to visit"
+    },{
+      id: "6",
+      name: "toters",
+      image: torters,
+      url: "https://www.totersapp.com/",
+      tooltip: "Click to visit"
     },
     {
-      id: "2",
+      id: "7",
       name: "Duolingo",
       image: duo,
       url: "https://www.duolingo.com/",
       tooltip: "Click to visit"
     },
     {
-      id: "3",
+      id: "8",
       name: "QuillBot",
       image:  quilboat, // Assuming this is the intended image
       url: "https://quillbot.com/",
       tooltip: "Click to visit"
     },
     {
-      id: "4",
+      id: "9",
       name: "Gamma",
       image: gamma,
       url: "https://gamma.app/",
       tooltip: "Click to visit"
     },
-    {
-      id: "5",
-      name: "ChatGPT",
-      image: chatgpt,
-      url: "https://chatgpt.com/",
-      tooltip: "Click to visit"
-    },{
-      id: "6",
-      name: "Pinterest",
-      image: pinterest,
-      url: "https://www.pinterest.com/",
-      tooltip: "Click to visit"
-    },{
-      id: "7",
-      name: "Talabat",
-      image: talabat,
-      url: "https://iraq.talabat.com/",
-      tooltip: "Click to visit"
-    },{
-      id: "8",
-      name: "Lezzoo",
-      image: lezzo,
-      url: "https://lezzoo.com/",
-      tooltip: "Click to visit"
-    },{
-      id: "9",
-      name: "toters",
-      image: torters,
-      url: "https://www.totersapp.com/",
-      tooltip: "Click to visit"
-    },
+    
   ],
   
   Social: [
@@ -415,9 +414,22 @@ const Allsites = {
       image:facebook,
       url: "https://www.facebook.com/",
       tooltip: "Click to visit"
+    }, {
+      id: "2",
+      name: "Youtube",
+      image: youtube,
+      url: "https://youtube.com/",
+
+      tooltip: "Click to visit"
     },
     {
-      id: "2",
+      id: "5",
+      name: "Telegram",
+      image: tele,
+      url: "https://web.telegram.org/",
+      tooltip: "Click to visit"
+    }, {
+      id: "6",
       name: "TikTok",
       image: tiktok,
       url: "https://www.tiktok.com/en/",
@@ -425,20 +437,13 @@ const Allsites = {
     },
     {
       id: "3",
-      name: "Telegram",
-      image: tele,
-      url: "https://web.telegram.org/",
-      tooltip: "Click to visit"
-    },
-    {
-      id: "4",
       name: "Instagram",
       image: instagram,
       url: "https://www.instagram.com/",
       tooltip: "Click to visit"
     },
     {
-      id: "5",
+      id: "4",
       name: "Snapchat",
       image: snapchat,
       url: "https://www.snapchat.com/",
@@ -453,28 +458,21 @@ const Allsites = {
     },
  
     {
-      id: "7",
+      id: "8",
       name: "vibar",
       image: vibar,
       url: "https://www.viber.com/en/",
       tooltip: "Click to visit"
     },
     {
-      id: "8",
+      id: "7",
       name: "Dicord",
       image: dis,
       url: "https://discord.com/",
 
       tooltip: "Click to visit"
     },
-    {
-      id: "9",
-      name: "Youtube",
-      image: youtube,
-      url: "https://youtube.com/",
-
-      tooltip: "Click to visit"
-    }
+   
   ]
 };
 

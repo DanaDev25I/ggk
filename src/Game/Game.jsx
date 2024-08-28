@@ -5,7 +5,7 @@ import '../index.css';
 
 const images = [
   { src: "/img/helmet-1.png", matched: false }, 
-  { src: "/img/potion-1.png", matched: false },
+  { src: "/img/gg.png", matched: false },
   { src: "/img/ring-1.png", matched: false },
   { src: "/img/scroll-1.png", matched: false },
   { src: "/img/shield-1.png", matched: false },
@@ -71,11 +71,11 @@ function Card() {
         <img className='h-8 w-8 md:h-12 md:w-12' alt="Coin" src="/img/—Pngtree—glossy golden coin icon_5986301.png" />
         <span className="ml-2 text-base md:text-xl">{coins}</span>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {cards.map((card) => (
-          <div key={card.id} className="flex items-center justify-center">
+          <div key={card.id} className="flex items-center  justify-center">
             <div 
-              className={`card ${card.matched || card === firstCard || card === secondCard ? 'flipped' : ''}`} 
+              className={`card ${card.matched || card === firstCard || card === secondCard ? 'flipped' : ''} h-[110px] `} 
               onClick={() => !card.matched && card !== firstCard && card !== secondCard && handleChoice(card)}
             >
               <img className="Back" src={card.src} alt="Card image" />

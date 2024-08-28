@@ -1,31 +1,36 @@
+// Context (StateContext.js)
 import { createContext, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { run } from '../Ai/config'; 
+import { run } from '../Ai/config';
 
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [isSending, setIsSending] = useState(false); // New state to track message sending
+  const [isSending, setIsSending] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
   const [numberofpage, setnumberofpage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
   const [searchhistory, setSearchhistory] = useState([]);
-  const [err,seterr] = useState(false)
+  const [avatar, setAvatar] = useState(localStorage.getItem('avatar') || ''); // Persisted avatar
+  const [err, setErr] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('authToken')); // Check if logged in
+   const [user, setUser] = useState(null); // Initialize user state
+
   useEffect(() => {
     const fetchData = async () => {
       if (!searchTerm) {
         return;
       }
       setLoading(true);
-  
+
       try {
-        const apiKey = "AIzaSyCuMZ1F76WQQETg3GBLu9eOkOi3p9xzeLQ";
-        const cx = 'f4589861069644b07';
+        const apiKey = "your-api-key";
+        const cx = 'your-cx-key';
         const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${searchTerm}&start=${(numberofpage - 1) * 10 + 1}`;
         const response = await axios.get(apiUrl);
         const items = response.data.items || [];
@@ -35,15 +40,15 @@ export const StateContextProvider = ({ children }) => {
         setTotalResults(totalResults);  
       } catch (error) {
         console.error('Error fetching data:', error);
-        seterr(true)
+        setErr(true);
       } finally {
         setLoading(false);
       }
     };
-  
+
     fetchData();
-  }, [searchTerm, numberofpage]);  
-  
+  }, [searchTerm, numberofpage]);
+
   const delayPara = (index, nextWord, callback) => {
     setTimeout(() => {
       callback(nextWord);
@@ -51,7 +56,7 @@ export const StateContextProvider = ({ children }) => {
   };
 
   const onSent = async (prompt) => {
-    setIsSending(true); // Disable sending until message processing is complete
+    setIsSending(true);
     const newMessage = { prompt, response: '', loading: true, typing: true };
     setMessages((prevMessages) => [...prevMessages, newMessage]);
     setLoading(true);
@@ -80,7 +85,6 @@ export const StateContextProvider = ({ children }) => {
         });
       });
       
-      // Remove typing indicator after message is fully displayed
       setMessages((prevMessages) =>
         prevMessages.map((msg, index) =>
           index === prevMessages.length - 1
@@ -90,10 +94,10 @@ export const StateContextProvider = ({ children }) => {
       );
     } catch (error) {
       console.error("Error while running chat:", error);
-      seterr(true)
+      setErr(true);
     } finally {
       setLoading(false);
-      setIsSending(false); // Re-enable sending after processing is complete
+      setIsSending(false);
     }
   };
 
@@ -109,8 +113,8 @@ export const StateContextProvider = ({ children }) => {
       setShowResults, setLoading, 
       setnumberofpage, numberofpage, 
       totalResults, setTotalResults, 
-      searchhistory, isSending ,
-       err
+      searchhistory, isSending, avatar, setAvatar, err, isLoggedIn, setIsLoggedIn,
+      user,setUser
     }}>
       {children}
     </StateContext.Provider>

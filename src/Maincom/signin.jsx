@@ -1,42 +1,36 @@
-// src/components/SignUpPage.js
-
 import { useForm } from 'react-hook-form';
 import PocketBase from 'pocketbase';
 import { useNavigate, Link } from 'react-router-dom';
 
 const pb = new PocketBase('https://search-app.pockethost.io/');
 
-
 const SignUpPage = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
 
- const onSubmitSignUp = async (data) => {
-  try {
-    // Ensure that the request is not being made if a previous one is pending
-    if (navigator.onLine) {
-      const userData = await pb.collection('users').create({
-        username: data.username,
-        email: data.email,
-        emailVisibility: true,
-        password: data.password,
-        passwordConfirm: data.password,
-        name: data.username,
-      });
+  const onSubmitSignUp = async (data) => {
+    try {
+      if (navigator.onLine) {
+        const userData = await pb.collection('users').create({
+          email: data.email,
+          emailVisibility: true,
+          password: data.password,
+          passwordConfirm: data.password, // Check if this field is required or handled differently
+          name: data.username,
+        });
 
-      console.log('User signed up:', userData);
+        console.log('User signed up:', userData);
 
-      await pb.collection('users').requestVerification(data.email);
+        await pb.collection('users').requestVerification(data.email);
 
-      navigate('/', { state: { user: { username: data.username } } });
-    } else {
-      console.error('No internet connection.');
+        navigate('/', { state: { user: { username: data.username } } });
+      } else {
+        console.error('No internet connection.');
+      }
+    } catch (error) {
+      console.error('Error signing up:', error.message || error);
     }
-  } catch (error) {
-    console.error('Error signing up:', error);
-  }
-};
-
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

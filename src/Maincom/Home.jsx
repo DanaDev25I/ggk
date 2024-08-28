@@ -1,19 +1,20 @@
-// src/pages/HomePage.js
-import  { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useStateContext } from '../store/usecontext';
 import PocketBase from 'pocketbase';
-
-const pb = new PocketBase('http://127.0.0.1:8090'); // Replace with your PocketBase server URL
+const pb = new PocketBase('https://search-app.pockethost.io/');
 
 const HomePage = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const [user, setUser] = useState(location.state?.user || null);
+  const { user, setUser } = useStateContext();
 
   const handleLogout = async () => {
-    await pb.authStore.clear(); 
-    setUser(null); 
-    navigate('/'); 
+    try {
+      await pb.authStore.clear();
+      setUser(null);
+      navigate('/login');
+    } catch (error) {
+      console.error('Error logging out:', error.message || error);
+    }
   };
 
   return (
@@ -35,7 +36,7 @@ const HomePage = () => {
             <Link to="/login" className="px-4 py-2 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700">
               Log In
             </Link>
-            <Link to="/signin" className="px-4 py-2 bg-green-600 text-white font-bold rounded-md hover:bg-green-700">
+            <Link to="/signup" className="px-4 py-2 bg-green-600 text-white font-bold rounded-md hover:bg-green-700">
               Sign Up
             </Link>
           </div>

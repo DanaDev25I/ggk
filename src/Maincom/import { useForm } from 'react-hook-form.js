@@ -1,34 +1,12 @@
 import { useForm } from 'react-hook-form';
 import PocketBase from 'pocketbase';
 import { useNavigate, Link } from 'react-router-dom';
-import { useRef, useEffect } from 'react';
-import gsap from 'gsap';
 
 const pb = new PocketBase('https://search-app.pockethost.io/');
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const submitRef = useRef(null);
-
-  useEffect(() => {
-    gsap.fromTo(emailRef.current, 
-      { opacity: 0, y: -20 }, 
-      { opacity: 1, y: 0, duration: 0.5 }
-    );
-    
-    gsap.fromTo(passwordRef.current, 
-      { opacity: 0, y: -20 }, 
-      { opacity: 1, y: 0, duration: 0.5, delay: 0.2 }
-    );
-
-    gsap.fromTo(submitRef.current, 
-      { opacity: 0, scale: 0.9 }, 
-      { opacity: 1, scale: 1, duration: 0.5, delay: 0.4 }
-    );
-  }, []);
 
   const onSubmitLogin = async (data) => {
     try {
@@ -37,7 +15,6 @@ const LoginPage = () => {
       navigate('/', { state: { user: authData.record } });
     } catch (error) {
       console.error('Error logging in:', error);
-      // Add user feedback here, e.g., setting an error state and displaying a message
     }
   };
 
@@ -49,28 +26,25 @@ const LoginPage = () => {
       >
         <div className="relative mb-6">
           <input
-            {...register('email', )}
+            {...register('email', { required: 'Email is required' })}
             type="email"
             placeholder="Your email address"
             className="w-full h-12 pl-14 pr-4 text-lg rounded-full border-2 border-teal-400 outline-none transition-colors bg-white text-gray-800 focus:border-teal-800"
-            ref={emailRef}
           />
           {errors.email && <p className="text-red-500">{errors.email.message}</p>}
         </div>
         <div className="relative mb-6">
           <input
-            {...register('password',)}
+            {...register('password', { required: 'Password is required' })}
             type="password"
             placeholder="Your password"
             className="w-full h-12 pl-14 pr-4 text-lg rounded-full border-2 border-teal-400 outline-none transition-colors bg-white text-gray-800 focus:border-teal-800"
-            ref={passwordRef}
           />
           {errors.password && <p className="text-red-500">{errors.password.message}</p>}
         </div>
         <button
           type="submit"
           className="w-full h-12 bg-teal-600 text-white rounded-full focus:outline-none"
-          ref={submitRef}
         >
           Login
         </button>
