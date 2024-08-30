@@ -104,7 +104,7 @@ const Allsites = {
       id: "8",
       name: "Kurddoblazh",
       image: doblazh,
-      url: "https://www.kurddoblazh.com/",
+      url: "https://www.kurd doblazh.com/",
       tooltip: "Click to visit",
       category: "Kurdish"
     },

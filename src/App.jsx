@@ -11,8 +11,9 @@ import Sport from './page/sport';
 import Education from './page/education';
 import Social from './page/social';
 import Login from './Maincom/login';
-import Signin from './Maincom/signin';
+import Signin from './Maincom/signin.jsx';
 import Profile from './Maincom/profile';
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -28,8 +29,8 @@ function App() {
         <Route path= "Education"  element={<Education/>}/>
         <Route path= "SocialMedias"  element={<Social/>}/>
         <Route path= "Login"  element={<Login/>}/>
-        <Route path= "signin"  element={<Signin/>}/>
-        <Route path= "profile"  element={<Profile/>}/>
+        <Route path= "signup"  element={<Signin/>}/>
+        <Route path= "pro"  element={<Profile/>}/>
         <Route path="*" element={<Err />} />
       </Route>
       </>

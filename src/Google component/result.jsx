@@ -21,7 +21,7 @@ const links = [
 export const Results = () => {
   const [value, setValue] = useState('1');
   const { theme } = useTheme();
-  const { setnumberofpage, err, numberofpage, searchTerm, searchhistory } = useStateContext();
+  const { setnumberofpage, err, numberofpage, searchTerm } = useStateContext();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -33,7 +33,7 @@ export const Results = () => {
 
   if (err) {
     return (
-      <div className="text-center mt-20">
+      <div className="text-center ">
         <h2 className="text-2xl text-red-500">Error</h2>
         <p className="text-lg text-gray-500">This feature is currently under construction.</p>
       </div>
@@ -41,17 +41,26 @@ export const Results = () => {
   }
 
   return (
-    <section className="flex flex-col mt-10 min-h-screen">
+    <section className="flex flex-col justify-between p-3 mt-10 h-[85vh]">
       {searchTerm ? (
         <>
-          <div className="w-full flex items-center justify-center sm:max-w-md mx-auto">
+       
+          <div className="w-full flex items-center justify-center p-4 sm:max-w-md mx-auto">
             <Search />
           </div>
 
           {/* Tabs Component */}
           <Box sx={{ width: '100%', typography: 'body1' }}>
             <TabContext value={value}>
-              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+              <Box
+                sx={{
+                  borderBottom: 1,
+                  borderColor: 'divider',
+                  '@media(min-width: 768px)': {
+                    width: '100%', 
+                  },
+                }}
+              >
                 <TabList
                   onChange={handleChange}
                   aria-label="tabs"
@@ -61,7 +70,8 @@ export const Results = () => {
                     overflowX: 'auto',
                     whiteSpace: 'nowrap',
                     '@media(min-width: 768px)': {
-                      flexWrap: 'nowrap',
+                      flexWrap: 'wrap',
+                      flexDirection: 'row',
                     },
                   }}
                 >
@@ -100,7 +110,7 @@ export const Results = () => {
               <Pagination
                 isCompact
                 showControls
-                total={5}  
+                total={5}
                 initialPage={numberofpage}
                 onChange={handlePageChange}
               />
@@ -108,25 +118,12 @@ export const Results = () => {
           </Box>
         </>
       ) : (
+        
         <div className="text-center text-gray-500 mt-20 flex flex-col items-center w-full">
+          <h1 className=' mb-10  text-3xl text-[rgb(69,215,203)] font-bold italic'>Search Websites</h1>
           <Search />
         </div>
       )}
-
-      {/* Search History Component */}
-      {searchhistory.length > 0 && (
-        <div className="mt-10 p-4 border-t border-gray-300 dark:border-gray-700">
-          <h2 className="text-lg font-semibold mb-2">Search History</h2>
-          <ul className="list-disc pl-5">
-            {searchhistory.map((term, index) => (
-              <li key={index} className="text-gray-700 dark:text-gray-300">
-                {term}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
       <Footer />
     </section>
   );

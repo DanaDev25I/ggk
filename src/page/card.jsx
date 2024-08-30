@@ -20,39 +20,41 @@ function MovieCard({ item }) {
 
   return (
     <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger>
-          <Card key={item.url} isFooterBlurred className="w-[400] h-[270px] md:h-[330px] bg-transparent border-none shadow-lg">
-            <div className="relative w-full h-full overflow-hidden">
-              <Link to={item.url}>
-                <Image
-                  removeWrapper
-                  alt={item.name}
-                  className="w-full px-[20px] md:p-[37px] h-full bg-gradient-to-bl from-slate-200 to-slate-400 object-scale-down transition-transform duration-300 ease-in-out transform hover:scale-110"
-                  src={item.image}
-                />
-              </Link>
-            </div>
-            <CardFooter className="absolute  bottom-0 border-t border-zinc-100/50 z-10 p-2 flex justify-between items-center">
-              <div className=''>
-                <p className="text-black  pr-2 md:py-1 md:pl-3 font-medium text-xl">{item.name}</p>
+    <Tooltip>
+      <TooltipTrigger>
+        <Card key={item.url} isFooterBlurred className="sm:w-[444px] w-[180px] flex flex-wrap h-[220px] sm:h-[335px] bg-white border-none">
+          <div className="relative w-full h-full overflow-hidden">
+            <Link to={item.url}>
+              <Image
+                removeWrapper
+                alt={item.name}
+                className="w-full px-[20px] sm:p-[37px] h-full bg-gradient-to-bl from-slate-200 to-slate-400 object-scale-down transition-transform duration-300 ease-in-out transform hover:scale-110"
+                src={item.image}
+              />
+            </Link>
+          </div>
+          <CardFooter className="absolute h-[40] text-center bottom-0 border-t border-zinc-100/50 z-10  flex justify-between place-items-center">
+          <div className='flex-wrap p-2 flex  items-center'>
+          <p className="text-black md:font-bold  md:text-lg text-xs translate-x-[-5]  lg:text-base font-medium truncate">{item.name}</p>
               </div>
-              <Button
+            <Button
                 size="sm"
                 onClick={() => handleCopy(item.url)}
                 color={copiedUrl === item.url ? 'success' : 'primary'}
+                className="text-sm md:text-xl    sm:p-6"
               >
                 {copiedUrl === item.url ? 'Copied!' : 'Copy Link'}
               </Button>
-            </CardFooter>
-          </Card>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{item.tooltip}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+          </CardFooter>
+        </Card>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>{item.tooltip}</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
   );
 }
 
 export default MovieCard;
+

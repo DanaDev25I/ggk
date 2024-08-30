@@ -6,9 +6,9 @@ function All() {
 
 
   return (
-    <div className="sm:px-56 flex flex-wrap justify-between space-y-6">
+    <div className="sm:px-56 flex flex-wrap justify-between space-y-4">
       {data?.map(({ link, title }, index) => (
-        <div key={index} className="md:w-2/5 w-full">
+        <div key={index} className="md:w-2/5 w-full  py-4 mt-3">
           <a href={link}  rel="noreferrer">
             <p className="text-xl ">
               {link.length > 30 ? `${link.substring(0, 30)}...` : link}

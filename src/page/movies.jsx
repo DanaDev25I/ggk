@@ -3,7 +3,7 @@ import Allsites from "@/constant/constant";
 import MovieCard from "./card"; 
 import backgroundImage from "../../public/img/gay.jpg";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
-
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 function Movies() {
   // Set the default selected category to 'Filter' to show all items initially
   const [selectedCategory, setSelectedCategory] = useState('Filter');
@@ -43,13 +43,14 @@ function Movies() {
             </div>
 
             <div className="flex items-center">
-              <Dropdown>
+            <Dropdown>
                 <DropdownTrigger>
                   <Button
-                    className="capitalize border-2 md:border-3 md:font-bold md:text-xl md:text-[20px] p-[10px] md:p-[25px]  border-[rgb(69,215,203)] translate-x-[70px] translate-y-[-40px] md:translate-x-[240px] md:translate-y-[-20px]"
+                    className="capitalize border-2 md:border-3 md:font-bold md:text-xl md:text-[20px] p-[10px] md:p-[25px] border-[rgb(69,215,203)] translate-x-[70px] translate-y-[-40px] md:translate-x-[240px] md:translate-y-[-20px] flex items-center gap-2" // Added flex and gap
                     bordered
                     color="primary"
                   >
+                    <FilterAltIcon /> 
                     {selectedCategory}
                   </Button>
                 </DropdownTrigger>
@@ -72,10 +73,10 @@ function Movies() {
         </div>
       </section>
 
-      <div className="relative bottom-10 md:bottom-16 border-b-0 z-20 grid border-t-0 p-6 grid-cols-2 gap-4 sm:grid-cols-2 border-[rgb(69,215,203)] border-3 lg:grid-cols-4 bg-gradient-to-b from-black via-white to-white dark:bg-gradient-to-t dark:from-black dark:to-black">
+      <div className="relative h-full w-full bottom-10 md:bottom-16 border-b-0 z-20 grid border-t-0 p-6 grid-cols-2 gap-4 sm:grid-cols-2 border-[rgb(69,215,203)] border-3 lg:grid-cols-4 bg-gradient-to-b from-black via-white to-white dark:bg-gradient-to-t dark:from-black dark:to-black">
         {filteredItems.length > 0 ? (
           filteredItems.map((item) => (
-            <div key={item.url} className="relative border-3 rounded-2xl border-[rgb(69,215,203)]">
+            <div key={item.url} className="relative w-[185px] h-[225px] md:h-[342px] md:w-[450px] border-3 p-0 m-0 rounded-2xl border-[rgb(69,215,203)]">
               <MovieCard item={item} />
             </div>
           ))

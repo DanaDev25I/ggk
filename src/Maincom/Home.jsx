@@ -1,49 +1,50 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useStateContext } from '../store/usecontext';
-import PocketBase from 'pocketbase';
-const pb = new PocketBase('https://search-app.pockethost.io/');
+import  { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
-const HomePage = () => {
-  const navigate = useNavigate();
-  const { user, setUser } = useStateContext();
+const StarAnimation = () => {
+  const starsRef = useRef([]);
 
-  const handleLogout = async () => {
-    try {
-      await pb.authStore.clear();
-      setUser(null);
-      navigate('/login');
-    } catch (error) {
-      console.error('Error logging out:', error.message || error);
-    }
-  };
+  useEffect(() => {
+    starsRef.current.forEach((star, i) => {
+      gsap.fromTo(
+        star,
+        { opacity: 0, y: -50 },
+        {
+          opacity: Math.random(),
+          y: 50,
+          duration: 3 + Math.random() * 3,
+          repeat: -1,
+          yoyo: true,
+          delay: i * 0.3,
+          ease: 'power1.inOut',
+        }
+      );
+    });
+  }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      {user ? (
-        <>
-          <h1 className="text-4xl font-bold mb-6">Hi, {user.username}!</h1>
-          <button
-            onClick={handleLogout}
-            className="px-4 py-2 bg-red-600 text-white font-bold rounded-md hover:bg-red-700"
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <h1 className="text-4xl font-bold mb-6">Welcome to the Home Page!</h1>
-          <div className="space-x-4">
-            <Link to="/login" className="px-4 py-2 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700">
-              Log In
-            </Link>
-            <Link to="/signup" className="px-4 py-2 bg-green-600 text-white font-bold rounded-md hover:bg-green-700">
-              Sign Up
-            </Link>
+    <div className="relative w-full h-screen bg-gray-900 overflow-hidden">
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <div className="relative w-full h-full">
+          <div className="signup-space w-full h-full">
+            {[...Array(40)].map((_, i) => (
+              <div
+                key={i}
+                className="signup-stars bg-white rounded-full absolute"
+                ref={(el) => (starsRef.current[i] = el)}
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${20 + Math.random() * 80}px`, // Responsive size range
+                  height: `${20 + Math.random() * 80}px`, // Responsive size range
+                }}
+              />
+            ))}
           </div>
-        </>
-      )}
+        </div>
+      </div>
     </div>
   );
 };
 
-export default HomePage;
+export default StarAnimation;

@@ -1,83 +1,193 @@
-import { useForm } from 'react-hook-form';
-import PocketBase from 'pocketbase';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
-
-const pb = new PocketBase('https://search-app.pockethost.io/');
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { Pb } from './auth.js'; // PocketBase client
 
 const SignUpPage = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const emailRef = useRef(null);
+  const usernameRef = useRef(null);
+  const passwordRef = useRef(null);
+  const confirmPasswordRef = useRef(null);
+  const submitRef = useRef(null);
+  const avatarRef = useRef(null);
 
-  const onSubmitSignUp = async (data) => {
-    try {
-      if (navigator.onLine) {
-        const userData = await pb.collection('users').create({
-          email: data.email,
-          emailVisibility: true,
-          password: data.password,
-          passwordConfirm: data.password, // Check if this field is required or handled differently
-          name: data.username,
-        });
+  useEffect(() => {
+    gsap.fromTo(emailRef.current, 
+      { opacity: 0, y: -20 }, 
+      { opacity: 1, y: 0, duration: 0.5 }
+    );
+    
+    gsap.fromTo(usernameRef.current, 
+      { opacity: 0, y: -20 }, 
+      { opacity: 1, y: 0, duration: 0.5, delay: 0.2 }
+    );
 
-        console.log('User signed up:', userData);
+    gsap.fromTo(passwordRef.current, 
+      { opacity: 0, y: -20 }, 
+      { opacity: 1, y: 0, duration: 0.5, delay: 0.4 }
+    );
 
-        await pb.collection('users').requestVerification(data.email);
+    gsap.fromTo(confirmPasswordRef.current, 
+      { opacity: 0, y: -20 }, 
+      { opacity: 1, y: 0, duration: 0.5, delay: 0.6 }
+    );
 
-        navigate('/', { state: { user: { username: data.username } } });
-      } else {
-        console.error('No internet connection.');
+    gsap.fromTo(submitRef.current, 
+      { opacity: 0, scale: 0.9 }, 
+      { opacity: 1, scale: 1, duration: 0.5, delay: 0.8 }
+    );
+  }, []);
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      username: '',
+      password: '',
+      confirmPassword: '',
+      avatar: null,
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email('Invalid email address')
+        .required('Email is required'),
+      username: Yup.string()
+        .required('Username is required'),
+      password: Yup.string()
+        .min(6, 'Password must be at least 6 characters long')
+        .required('Password is required'),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .required('Confirm Password is required'),
+    }),
+    onSubmit: async (values) => {
+      try {
+        const formData = new FormData();
+
+        // Append user details
+        formData.append('email', values.email);
+        formData.append('username', values.username);
+        formData.append('password', values.password);
+        formData.append('passwordConfirm', values.confirmPassword);
+
+        // Append avatar if it exists
+        if (values.avatar) {
+          formData.append('avatar', values.avatar);
+        }
+
+        // Create user
+        await Pb.collection('users').create(formData);
+
+        // Authenticate user
+        await Pb.collection('users').authWithPassword(values.email, values.password);
+
+        // Navigate to another page after successful sign-up
+        navigate('/pro');
+      } catch (error) {
+        console.error('Sign-up failed:', error.response ? error.response.data.message : error.message);
+        alert('Sign-up failed: ' + (error.response ? error.response.data.message : error.message));
       }
-    } catch (error) {
-      console.error('Error signing up:', error.message || error);
-    }
-  };
+    },
+  });
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold mb-6">Sign Up</h1>
-        <form onSubmit={handleSubmit(onSubmitSignUp)}>
-          <div className="mb-4">
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">Username</label>
-            <input
-              id="username"
-              type="text"
-              {...register('username', { required: 'Username is required' })}
-              className={`w-full px-3 py-2 border ${errors.username ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500`}
-            />
-            {errors.username && <p className="text-red-500 text-sm mt-1">{errors.username.message}</p>}
-          </div>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input
-              id="email"
-              type="email"
-              {...register('email', { required: 'Email is required' })}
-              className={`w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500`}
-            />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
-          </div>
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-            <input
-              id="password"
-              type="password"
-              {...register('password', { required: 'Password is required' })}
-              className={`w-full px-3 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500`}
-            />
-            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
-          </div>
-          <button
-            type="submit"
-            className="w-full py-2 px-4 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            Sign Up
-          </button>
-        </form>
-        <Link to="/login" className="mt-4 w-full py-2 px-4 text-blue-600 hover:underline focus:outline-none block text-center">
-          Already have an account? Login
-        </Link>
-      </div>
+      <form 
+        onSubmit={formik.handleSubmit}
+        className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md"
+      >
+        <div className="relative mb-6">
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Your email address"
+            className="w-full h-12 pl-14 pr-4 text-lg rounded-full border-2 border-teal-400 outline-none transition-colors bg-white text-gray-800 focus:border-teal-800"
+            ref={emailRef}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+          />
+          {formik.touched.email && formik.errors.email ? (
+            <p className="text-red-500">{formik.errors.email}</p>
+          ) : null}
+        </div>
+        <div className="relative mb-6">
+          <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="Your username"
+            className="w-full h-12 pl-14 pr-4 text-lg rounded-full border-2 border-teal-400 outline-none transition-colors bg-white text-gray-800 focus:border-teal-800"
+            ref={usernameRef}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.username}
+          />
+          {formik.touched.username && formik.errors.username ? (
+            <p className="text-red-500">{formik.errors.username}</p>
+          ) : null}
+        </div>
+        <div className="relative mb-6">
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Your password"
+            className="w-full h-12 pl-14 pr-4 text-lg rounded-full border-2 border-teal-400 outline-none transition-colors bg-white text-gray-800 focus:border-teal-800"
+            ref={passwordRef}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+          />
+          {formik.touched.password && formik.errors.password ? (
+            <p className="text-red-500">{formik.errors.password}</p>
+          ) : null}
+        </div>
+        <div className="relative mb-6">
+          <input
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            placeholder="Confirm your password"
+            className="w-full h-12 pl-14 pr-4 text-lg rounded-full border-2 border-teal-400 outline-none transition-colors bg-white text-gray-800 focus:border-teal-800"
+            ref={confirmPasswordRef}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.confirmPassword}
+          />
+          {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+            <p className="text-red-500">{formik.errors.confirmPassword}</p>
+          ) : null}
+        </div>
+        <div className="relative mb-6">
+          <input
+            id="avatar"
+            name="avatar"
+            type="file"
+            onChange={(event) => {
+              formik.setFieldValue('avatar', event.currentTarget.files[0]);
+            }}
+            className="w-full text-gray-800"
+            ref={avatarRef}
+          />
+          {formik.touched.avatar && formik.errors.avatar ? (
+            <p className="text-red-500">{formik.errors.avatar}</p>
+          ) : null}
+        </div>
+        <button
+          type="submit"
+          className="w-full h-12 bg-teal-600 text-white rounded-full focus:outline-none"
+          ref={submitRef}
+        >
+          Sign Up
+        </button>
+        <div className="mt-4 text-center">
+          <Link to="/login" className="text-teal-600">Already have an account? Log in</Link>
+        </div>
+      </form>
     </div>
   );
 };

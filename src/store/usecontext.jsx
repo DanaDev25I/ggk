@@ -1,4 +1,3 @@
-// Context (StateContext.js)
 import { createContext, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -15,10 +14,11 @@ export const StateContextProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [numberofpage, setnumberofpage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
-  const [searchhistory, setSearchhistory] = useState([]);
+
   const [avatar, setAvatar] = useState(localStorage.getItem('avatar') || ''); // Persisted avatar
   const [err, setErr] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('authToken')); // Check if logged in
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('authToken')); // Check
+
    const [user, setUser] = useState(null); // Initialize user state
 
   useEffect(() => {
@@ -29,12 +29,11 @@ export const StateContextProvider = ({ children }) => {
       setLoading(true);
 
       try {
-        const apiKey = "your-api-key";
-        const cx = 'your-cx-key';
+        const apiKey = "AIzaSyAupSPqcjb4ugYAa3gGWRSHTv6xnxubG9w";
+        const cx = '768b5d2139b45494a';
         const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${searchTerm}&start=${(numberofpage - 1) * 10 + 1}`;
         const response = await axios.get(apiUrl);
         const items = response.data.items || [];
-        setSearchhistory((prev) => [...prev, searchTerm]);
         const totalResults = response.data.searchInformation.totalResults || 0; 
         setData(items);
         setTotalResults(totalResults);  
@@ -113,7 +112,7 @@ export const StateContextProvider = ({ children }) => {
       setShowResults, setLoading, 
       setnumberofpage, numberofpage, 
       totalResults, setTotalResults, 
-      searchhistory, isSending, avatar, setAvatar, err, isLoggedIn, setIsLoggedIn,
+      isSending, avatar, setAvatar, err, isLoggedIn, setIsLoggedIn,
       user,setUser
     }}>
       {children}
