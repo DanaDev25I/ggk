@@ -348,7 +348,7 @@ const Allsites = {
   Education: [
     {
       id: "1",
-      name: "Salahaddin University",
+      name: "Salahaddin Unv",
       image: salllahadin, 
       url: "https://ids.su.edu.krd/account/login?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dsalahaddin-Uni.webapp1%26redirect_uri%3Dhttps%253A%252F%252Fapp.su.edu.krd%252Ferp-web-signin-oidc%26response_type%3Dcode%2520id_token%26scope%3Dopenid%2520profile%2520roles%2520hrapi%2520offline_access%26response_mode%3Dform_post%26nonce%3D638598612927837485.OTAzNjM0NWItYTc4MS00ZTcyLWEyOWQtODU3ZWI1YTE1NDBkMDA1ZmJmMzUtYTNiMC00Zjk5LTgxMDctNWViMDc1MzUzMTIz%26state%3DCfDJ8LxI8ChCUGZMlKEGZXqDsFQ4m4uFg-9d9_1yqhqoYf4voTmJmJjeNSfJXCGBbV5kPdbKkE83BDHjJ-R5iJqO-VXgv-kg6bRIXEKD0m3xRlmo9rCkWXBR33t09K__d-vbjzBk2OFCJtiBPSe1eorvY7EbaILZFzaR8ZPpe5ml4XVLLatuHnVNROnrz1BywvaBQoKK7pDwrvuS7ZTl15xQ9iit_elw-d-7vlwhPj0UnVmZJb5lmFozHxuzYuoBxN-7N6gjXBapss_hPfS3qsVguri9duIyEkeWk9wCmfjOSE3BdqTO_5jZBzdSPzg0HFcnmA%26x-client-SKU%3DID_NETSTANDARD1_4%26x-client-ver%3D5.2.0.0",
       tooltip: "Click to visit"

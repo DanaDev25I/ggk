@@ -17,7 +17,7 @@ function MovieCard({ item }) {
       setTimeout(() => setCopiedUrl(null), 2000); // Reset after 2 seconds
     });
   };
-
+//make it responsive to laptop 
   return (
     <TooltipProvider>
     <Tooltip>
@@ -34,7 +34,7 @@ function MovieCard({ item }) {
             </Link>
           </div>
           <CardFooter className="absolute h-[40] text-center bottom-0 border-t border-zinc-100/50 z-10  flex justify-between place-items-center">
-          <div className='flex-wrap p-2 flex  items-center'>
+          <div className='flex-wrap  flex  items-center'>
           <p className="text-black md:font-bold  md:text-lg text-xs translate-x-[-5]  lg:text-base font-medium truncate">{item.name}</p>
               </div>
             <Button
