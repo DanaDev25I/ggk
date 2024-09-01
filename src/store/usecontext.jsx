@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { run } from '../Ai/config';
+import {Pb} from '../Maincom/auth.js'
 
 const StateContext = createContext();
 
@@ -14,12 +15,77 @@ export const StateContextProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [numberofpage, setnumberofpage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
-
-  const [avatar, setAvatar] = useState(localStorage.getItem('avatar') || ''); // Persisted avatar
+  const [profilePicUrl, setProfilePicUrl] = useState('');
+  const [userName, setUserName] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(Pb.authStore.isValid);
   const [err, setErr] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('authToken')); // Check
+  const [user, setUser] = useState(null);
 
-   const [user, setUser] = useState(null); // Initialize user state
+  const login = async (email, password) => {
+    try {
+      const authResponse = await Pb.collection('users').authWithPassword(email, password);
+      // Assuming authResponse contains user info
+      setUser({ email, ...authResponse });
+     setErr(null); // Clear any previous error
+    } catch (err) {
+     setErr(err.message || 'Login failed'); // Set error message
+      throw err; // Rethrow error if needed
+    }
+  };
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchProfileData = async () => {
+      setLoading(true);
+      try {
+        const user = Pb.authStore.model;
+        if (user) {
+          const userRecord = await Pb.collection('users').getOne(user.id);
+          if (userRecord.avatar) {
+            const fileUrl = Pb.files.getUrl(userRecord, userRecord.avatar);
+            if (isMounted) setProfilePicUrl(fileUrl);
+          }
+          if (userRecord.username) {
+            if (isMounted) setUserName(userRecord.username);
+          }
+        }
+      } catch (err) {
+        setErr('Error fetching profile data.');
+        console.error('Error:', err);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    fetchProfileData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    Pb.authStore.onChange(() => {
+      setIsLoggedIn(Pb.authStore.isValid);
+      setUserName(Pb.authStore.model?.username || '');
+      setProfilePicUrl(Pb.authStore.model?.avatar || '');
+    });
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await Pb.authStore.clear();
+      setIsLoggedIn(false);
+      setProfilePicUrl('');
+      setUserName('');
+      setErr('');
+    } catch (error) {
+      setErr('Error logging out.');
+      console.error('Error:', error);
+    }
+  };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -112,8 +178,8 @@ export const StateContextProvider = ({ children }) => {
       setShowResults, setLoading, 
       setnumberofpage, numberofpage, 
       totalResults, setTotalResults, 
-      isSending, avatar, setAvatar, err, isLoggedIn, setIsLoggedIn,
-      user,setUser
+      isSending,  err, isLoggedIn, setIsLoggedIn,
+      profilePicUrl, userName, handleLogout ,login,user
     }}>
       {children}
     </StateContext.Provider>

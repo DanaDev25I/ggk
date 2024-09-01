@@ -28,10 +28,10 @@ function Sport() {
         </div>
       </section>
 
-      <div className="relative bottom-10 md:bottom-16 border-b-0 z-20 grid border-t-0 p-6 grid-cols-2 gap-4 sm:grid-cols-2 border-[rgb(69,215,203)] border-3 lg:grid-cols-4 bg-gradient-to-b from-gray-400 via-white to-white dark:bg-gradient-to-t dark:from-black dark:to-black">
+      <div className="relative bottom-10 md:bottom-16 border-b-0 z-20 grid border-t-0 p-6 grid-cols-2 gap-4 sm:grid-cols-2 border-[rgb(69,215,203)] border-3 lg:grid-cols-4 bg-gradient-to-b from-gray-400 via-white to-white dark:bg-gradient-to-t dark:from-black dark:to-gray-600">
       {Allsites.Education.length > 0 ? (
           Allsites.Education.map((item) => (
-            <div key={item.url} className="relative w-[185px] h-[225px] md:h-[342px] md:w-[450px] border-3 p-0 m-0 rounded-2xl border-[rgb(69,215,203)]">
+            <div key={item.url} className="relative w-[174px] h-[225px] md:h-[296px] md:w-[365px] border-3 p-0 m-0 rounded-2xl border-[rgb(69,215,203)]">
             <MovieCard key={item.url} item={item} />
 
             </div>

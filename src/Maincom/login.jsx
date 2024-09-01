@@ -1,17 +1,18 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
-import { Input } from '@/components/ui/input'; // Import your custom Input component
-import { Pb } from './auth.js'; // PocketBase client
+import { Input } from '@/components/ui/input';
+import { useStateContext } from '../store/usecontext.jsx';
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import logo from '../../public/img/world-wide.png';
-import Stars from './starbg'; // Import your Stars component
+import Stars from './starbg';
 import WestIcon from '@mui/icons-material/West';
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const [loginError, setLoginError] = useState(''); // State for error messages
+  const { login } =  useStateContext(); // Get the login function from context
+  const [loginError, setLoginError] = useState('');
 
   const formik = useFormik({
     initialValues: {
@@ -27,13 +28,13 @@ const LoginPage = () => {
     }),
     onSubmit: async (values) => {
       try {
-        await Pb.collection('users').authWithPassword(values.email, values.password);
+        console.log('Submitting:', values);
+        await login(values.email, values.password);
+        console.log('Login successful');
         navigate('/');
-        console.log(values);
       } catch (error) {
-        // Set a specific error message based on the error
-        setLoginError('Invalid email or password');
-        console.error('Login failed:', error.response ? error.response.data.message : error.message);
+        console.error('Login failed:', error);
+        setLoginError(error.response ? error.response.data.message : 'An error occurred during login');
       }
     },
   });
@@ -91,17 +92,16 @@ const LoginPage = () => {
 
   return (
     <div className="relative w-full h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
-
-      <Stars /> {/* Add the stars component for background effect */}
+      <Stars />
       <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
         <form 
           onSubmit={formik.handleSubmit}
           className="bg-white dark:bg-gray-900 p-8 rounded-lg w-full max-w-md relative shadow-lg border-t-3 border-[#01ffff] dark:border-[#01ffff]"
         >
-            <Link className="flex items-center text-black dark:text-white hover:text-gray-500" to="/">
-           <WestIcon fontSize="medium" className="mr-1" />
+          <Link className="flex items-center text-black dark:text-white hover:text-gray-500" to="/">
+            <WestIcon fontSize="medium" className="mr-1" />
             Go back
-        </Link>
+          </Link>
           <img src={logo} alt="logo" className="w-24 h-24 mb-4 mx-auto" />
           <h1 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">Log in</h1>
           <div className="relative mb-8">

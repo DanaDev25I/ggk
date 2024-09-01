@@ -26,7 +26,7 @@ function Movies() {
 
   return (
     <div className="relative">
-      <section className="relative h-[300px] sm:h-[300px] lg:h-[700px] border-[rgb(69,215,203)] border">
+      <section className="relative h-[300px] sm:h-[300px] lg:h-[590px] border-[rgb(69,215,203)] border">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -73,10 +73,10 @@ function Movies() {
         </div>
       </section>
 
-      <div className="relative h-full w-full bottom-10 md:bottom-16 border-b-0 z-20 grid border-t-0 p-6 grid-cols-2 gap-4 sm:grid-cols-2 border-[rgb(69,215,203)] border-3 lg:grid-cols-4 bg-gradient-to-b from-black via-white to-white dark:bg-gradient-to-t dark:from-black dark:to-black">
+      <div className="relative h-full w-full bottom-10 md:bottom-[700px]border-b-0 z-20 grid border-t-0 p-6 grid-cols-2 gap-4 sm:grid-cols-2 border-[rgb(69,215,203)] border-3 lg:grid-cols-4 bg-gradient-to-b from-black via-white to-white dark:bg-gradient-to-t dark:from-black dark:to-black">
         {filteredItems.length > 0 ? (
           filteredItems.map((item) => (
-            <div key={item.url} className="relative w-[185px] h-[225px] md:h-[342px] md:w-[450px] border-3 p-0 m-0 rounded-2xl border-[rgb(69,215,203)]">
+            <div key={item.url} className="relative w-[174px] h-[225px] md:h-[296px] md:w-[365px] border-3 p-0 m-0 rounded-2xl border-[rgb(69,215,203)]">
               <MovieCard item={item} />
             </div>
           ))

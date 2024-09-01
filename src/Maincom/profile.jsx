@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Pb } from './auth.js'; 
-import { Link } from 'react-router-dom';
+
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-
+import { useNavigate } from 'react-router-dom';
+import withAuth from './Hoc.jsx';
 import { Spinner } from "@nextui-org/spinner"
 
 const Home = () => {
@@ -13,7 +14,8 @@ const Home = () => {
   const [, setUserEmail] = useState(Pb.authStore.model?.email || '');
   const [userName, setUserName] = useState(Pb.authStore.model?.username || '');
   const [loading, setLoading] = useState(false); // Add a loading state
-  
+  const navigate = useNavigate();
+
  
 
   const ProfileSchema = Yup.object().shape({
@@ -82,6 +84,7 @@ const Home = () => {
       setProfilePicUrl('');
       setUserEmail('');
       setUserName('');
+      navigate('/')
     } catch (error) {
       console.error('Error logging out:', error.message || error);
     }
@@ -96,7 +99,7 @@ const handleProfileUpdate = async (values) => {
   try {
     const formData = new FormData();
 
-    // Check if the user is trying to update their password
+    // Password update logic
     if (values.password || values.confirmPassword) {
       if (!values.oldPassword || values.oldPassword.trim() === '') {
         setError('Old password is required to change your password.');
@@ -111,13 +114,12 @@ const handleProfileUpdate = async (values) => {
         return;
       }
 
-      // Append password fields to the FormData
       formData.append('oldPassword', values.oldPassword);
       formData.append('password', values.password);
       formData.append('passwordConfirm', values.confirmPassword);
     }
 
-    // Append the username if it needs to be updated
+    // Username update logic
     if (values.username && values.username.trim() !== '') {
       formData.append('username', values.username);
     }
@@ -128,13 +130,21 @@ const handleProfileUpdate = async (values) => {
     // Update local states with the new information
     setUserName(updatedUser.username);
 
-    setError(''); // Clear any previous error
+    // After updating the profile, log out the user
+    await Pb.authStore.clear();
+    setIsLoggedIn(false);
+    setProfilePicUrl('');
+    setUserEmail('');
+    setUserName('');
+    setError(''); 
+    navigate('/login')
   } catch (err) {
     setError(`Error updating profile: ${err.response?.data?.message || err.message || 'Unknown error'}`);
     console.error('Error updating profile:', err.response || err);
   }
 };
 
+  
   const handleAvatarUpdate = async (values) => {
     try {
       const formData = new FormData();
@@ -180,8 +190,7 @@ const handleProfileUpdate = async (values) => {
           <p className="text-gray-500 mb-4">Loading profile picture...</p>
         )}
 
-        {isLoggedIn ? (
-          <>
+        
        <h1 className="text-3xl font-bold text-gray-800 mb-4">Hi <br/> {userName}</h1>
 
 <Formik
@@ -236,27 +245,14 @@ const handleProfileUpdate = async (values) => {
   </Form>
 </Formik>
 
-
-
-
             <button
               onClick={handleLogout}
               className="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition duration-300 mt-4"
             >
               Logout
             </button>
-          </>
-        ) : (
-          <>
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">Welcome to the Home Page!</h1>
-            <Link
-              to="/login"
-              className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
-            >
-              Log In
-            </Link>
-          </>
-        )}
+        
+       
       </div>
 
       {/* Avatar Section */}
@@ -298,4 +294,4 @@ const handleProfileUpdate = async (values) => {
   );
 };
 
-export default Home;
+export default withAuth(Home);

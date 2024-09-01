@@ -3,11 +3,13 @@ import { gsap } from 'gsap';
 import robot from '../../public/img/world-wide.png';
 import { Link } from 'react-router-dom';
 import Starbg from './starbg';
-
+import { useStateContext } from '../store/usecontext';
 const Home = () => {
   const [starCount, setStarCount] = useState(40);
   const starsRef = useRef([]);
   const textRefs = useRef([]);
+
+  const { isLoggedIn } = useStateContext(); // Destructure isLoggedIn from AuthContext
 
   useEffect(() => {
     const updateStarCount = () => {
@@ -46,10 +48,10 @@ const Home = () => {
       opacity: 1,
       scale: 1.5,
       duration: 1,
-      ease:"power2.inOut"
+      ease: "power2.inOut"
     });
 
-    gsap.to("#span", { opacity: 1, duration: 1.5, delay: 1,  });
+    gsap.to("#span", { opacity: 1, duration: 1.5, delay: 1 });
   }, []);
 
   useEffect(() => {
@@ -62,31 +64,35 @@ const Home = () => {
         duration: 1.5,
         stagger: 0.3,
         ease: 'power4.out',
-         delay: 1,
+        delay: 1,
       }
     );
   }, []);
 
   return (
     <div className="relative w-full h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
-       <Starbg/>
+      <Starbg />
       <div className="relative space-x-4 justify-end flex p-[20px] md:translate-x-[-50px]">
-        <a href="/signup" className="mt-6 px-4 py-2 bg-white font-bold text-[#01ffff] rounded-md hover:bg-[#01ffff] hover:text-white transition-all border-3 border-[#01ffff] dark:bg-black dark:text-[#01ffff] dark:border-[#01ffff] dark:hover:bg-[#01ffff] dark:hover:text-white transform hover:scale-105">
-          Sign Up
-        </a>
-        <a href="/login" className="mt-6 px-4 py-2 font-bold bg-white text-[#01ffff] rounded-md hover:bg-[#01ffff] hover:text-white transition-all border-3 border-[#01ffff] dark:bg-black dark:text-[#01ffff] dark:border-[#01ffff] dark:hover:bg-[#01ffff] dark:hover:text-white transform hover:scale-105">
-          Login
-        </a>
+        {!isLoggedIn && (
+          <>
+            <a href="/signup" className="mt-6 px-4 py-2 bg-white font-bold text-[#01ffff] rounded-md hover:bg-[#01ffff] hover:text-white transition-all border-3 border-[#01ffff] dark:bg-black dark:text-[#01ffff] dark:border-[#01ffff] dark:hover:bg-[#01ffff] dark:hover:text-white transform hover:scale-105">
+              Sign Up
+            </a>
+            <a href="/login" className="mt-6 px-4 py-2 font-bold bg-white text-[#01ffff] rounded-md hover:bg-[#01ffff] hover:text-white transition-all border-3 border-[#01ffff] dark:bg-black dark:text-[#01ffff] dark:border-[#01ffff] dark:hover:bg-[#01ffff] dark:hover:text-white transform hover:scale-105">
+              Login
+            </a>
+          </>
+        )}
       </div>
       <div className="relative z-10 flex flex-col items-center translate-y-[100px]">
-        <div className="text-center dark:text-white">
-          <div className="flex gap-7 mb-[100px] px-[29px] md:translate-x-[-300px]">
+        <div className="text-center  dark:text-white">
+          <div className="flex gap-7 mb-[80px] md:mb-[60px] mt-[-50px] px-[29px] md:translate-x-[-300px]">
             <img id="img" className="opacity-0 md:h-[80px] h-[60px]" src={robot} alt="Logo" />
-            <div className='  md:translate-y-[-20px]'>
-            <span id="span" className="opacity-0 bg-gradient-to-r from-[#50e9e9] to-[#01ffff] bg-clip-text text-transparent text-4xl italic font-bold transition-colors hover:text-gray-400">
-            <span className="text-2xl font-semibold text-white md:translate-x-[40px] ">Welcome to</span><br/>
+            <div className='md:translate-y-[-20px]'>
+              <span id="span" className="opacity-0 bg-gradient-to-r from-[#50e9e9] to-[#01ffff] bg-clip-text text-transparent text-4xl italic font-bold transition-colors hover:text-gray-400">
+                <span className="text-2xl font-semibold text-white md:translate-x-[40px] ">Welcome to</span><br />
                 Webfinder
-            </span>
+              </span>
             </div>
           </div>
 
@@ -94,27 +100,27 @@ const Home = () => {
             <span ref={(el) => (textRefs.current[0] = el)}>
               Discover a world of possibilities with our curated categories!
             </span>
-            <br className="hidden md:block"/>
+            <br className="hidden md:block" />
             <span ref={(el) => (textRefs.current[1] = el)}>
               Whether you are looking to dive into thrilling 
             </span>
-            <br className="hidden md:block"/>
+            <br className="hidden md:block" />
             <span ref={(el) => (textRefs.current[2] = el)}>
               <Link to="/games" className="text-blue-200 hover:underline">games</Link> for endless fun, explore the latest
             </span>
-            <br className="hidden md:block"/>
+            <br className="hidden md:block" />
             <span ref={(el) => (textRefs.current[3] = el)}>
               <Link to="/movies" className="text-blue-200 hover:underline">movies</Link> for your entertainment, find essential
             </span>
-            <br className="hidden md:block"/>
+            <br className="hidden md:block" />
             <span ref={(el) => (textRefs.current[4] = el)}>
               <Link to="/apps" className="text-blue-200 hover:underline">apps</Link> to boost your
             </span>
-            <br className="hidden md:block"/>
+            <br className="hidden md:block" />
             <span ref={(el) => (textRefs.current[5] = el)}>
               productivity, or connect with friends through various
             </span>
-            <br className="hidden md:block"/>
+            <br className="hidden md:block" />
             <span ref={(el) => (textRefs.current[6] = el)}>
               <Link to="/social-media" className="text-blue-200 hover:underline">social media</Link> platforms, we have it all right here for you!
             </span>

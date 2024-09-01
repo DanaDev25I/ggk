@@ -22,18 +22,18 @@ function MovieCard({ item }) {
     <TooltipProvider>
     <Tooltip>
       <TooltipTrigger>
-        <Card key={item.url} isFooterBlurred className="sm:w-[444px] w-[180px] flex flex-wrap h-[220px] sm:h-[335px] bg-white border-none">
+        <Card key={item.url} isFooterBlurred className="sm:w-[360px] w-[170px] flex flex-wrap h-[220px] sm:h-[290px] bg-white border-none">
           <div className="relative w-full h-full overflow-hidden">
             <Link to={item.url}>
               <Image
                 removeWrapper
                 alt={item.name}
-                className="w-full px-[20px] sm:p-[37px] h-full bg-gradient-to-bl from-slate-200 to-slate-400 object-scale-down transition-transform duration-300 ease-in-out transform hover:scale-110"
+                className="w-full px-[20px] sm:p-[80px] h-full bg-gradient-to-bl from-slate-200 to-slate-400 object-scale-down transition-transform duration-300 ease-in-out transform hover:scale-110"
                 src={item.image}
               />
             </Link>
           </div>
-          <CardFooter className="absolute h-[40] text-center bottom-0 border-t border-zinc-100/50 z-10  flex justify-between place-items-center">
+          <CardFooter className="absolute h-[40] sm:h-[60px] text-center bottom-0 border-t border-zinc-100/50 z-10  flex justify-between place-items-center">
           <div className='flex-wrap  flex  items-center'>
           <p className="text-black md:font-bold  md:text-lg text-xs translate-x-[-5]  lg:text-base font-medium truncate">{item.name}</p>
               </div>
