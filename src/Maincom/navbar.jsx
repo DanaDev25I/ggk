@@ -88,7 +88,7 @@ function Navbar() {
             <div className="flex gap-4 items-center">
               <Avatar
                 isBordered
-                className="bg-[rgb(51,167,158)] hover:bg-[rgb(51,154,145)] transition-all text-white"
+                className="bg-[rgb(51,167,158)] border-[#01ffff] border-2 hover:bg-[rgb(51,154,145)] transition-all text-white"
                 size="lg"
                 showFallback
                 src={isLoggedIn ? profilePicUrl : defaultAvatarUrl}
@@ -158,7 +158,7 @@ function Navbar() {
                 >
                   <Avatar
                     isBordered
-                    className="bg-[rgb(51,167,158)] text-white h-[90px] w-[90px] hover:bg-[rgb(69,215,203)] transition-all rounded-full" 
+                    className="bg-[rgb(51,167,158)] border-[#01ffff] border-2 text-white h-[90px] w-[90px] hover:bg-[rgb(69,215,203)] transition-all rounded-full" 
                     size="lg"
                     showFallback
                     src={isLoggedIn ? profilePicUrl : defaultAvatarUrl}

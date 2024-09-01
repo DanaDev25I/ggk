@@ -48,7 +48,7 @@ const AvatarUploadStep = () => {
         await Pb.collection('users').create(formData);
         await Pb.collection('users').authWithPassword(userDetails.email, userDetails.password);
 
-        navigate('/pro');
+        navigate('/');
       } catch (error) {
         setSignUpError('Please choose a picture.');
         console.error('Sign-up failed:', error.response ? error.response.data.message : error.message);
