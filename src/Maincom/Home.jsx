@@ -75,12 +75,12 @@ const Home = () => {
       <div className="relative space-x-4 justify-end flex p-[20px] md:translate-x-[-50px]">
         {!isLoggedIn && (
           <>
-            <a href="/signup" className="mt-6 px-4 py-2 bg-white font-bold text-[#01ffff] rounded-md hover:bg-[#01ffff] hover:text-white transition-all border-3 border-[#01ffff] dark:bg-black dark:text-[#01ffff] dark:border-[#01ffff] dark:hover:bg-[#01ffff] dark:hover:text-white transform hover:scale-105">
+            <Link to="/signup" className="mt-6 px-4 py-2 bg-white font-bold text-[#01ffff] rounded-md hover:bg-[#01ffff] hover:text-white transition-all border-3 border-[#01ffff] dark:bg-black dark:text-[#01ffff] dark:border-[#01ffff] dark:hover:bg-[#01ffff] dark:hover:text-white transform hover:scale-105">
               Sign Up
-            </a>
-            <a href="/login" className="mt-6 px-4 py-2 font-bold bg-white text-[#01ffff] rounded-md hover:bg-[#01ffff] hover:text-white transition-all border-3 border-[#01ffff] dark:bg-black dark:text-[#01ffff] dark:border-[#01ffff] dark:hover:bg-[#01ffff] dark:hover:text-white transform hover:scale-105">
+            </Link>
+            <Link to="/login" className="mt-6 px-4 py-2 font-bold bg-white text-[#01ffff] rounded-md hover:bg-[#01ffff] hover:text-white transition-all border-3 border-[#01ffff] dark:bg-black dark:text-[#01ffff] dark:border-[#01ffff] dark:hover:bg-[#01ffff] dark:hover:text-white transform hover:scale-105">
               Login
-            </a>
+            </Link>
           </>
         )}
       </div>
